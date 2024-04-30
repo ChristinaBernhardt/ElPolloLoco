@@ -3,9 +3,11 @@ class World {
   enemies = [new Chicken(), new Chicken(), new Chicken()];
   clouds = [new Cloud()];
   layers = [
-    new layer("assets/5_background/layers/3_third_layer/1.png"),
-    new layer("assets/5_background/layers/2_second_layer/1.png"),
-    new layer("assets/5_background/layers/1_first_layer/1.png"),
+    
+    new layer("assets/5_background/layers/air.png", 0),
+    new layer("assets/5_background/layers/3_third_layer/1.png", 0),
+    new layer("assets/5_background/layers/2_second_layer/1.png", 0),
+    new layer("assets/5_background/layers/1_first_layer/1.png", 0),
   ];
   canvas;
   ctx;
@@ -18,20 +20,10 @@ class World {
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+    this.addObjectsToMap(this.layers);
+    this.addObjectsToMap(this.clouds);
     this.addToMap(this.character);
-
-    this.enemies.forEach(enemy => {
-      this.addToMap(enemy);
-    });
-
-    this.clouds.forEach(cloud => {
-      this.addToMap(cloud);
-    });
-
-    this.layers.forEach(layer => {
-      this.addToMap(layer);
-    });
+    this.addObjectsToMap(this.enemies);
 
     // Draw wird immer wieder aufgerufen
     let self = this;
@@ -40,9 +32,13 @@ class World {
     });
   }
 
+  addObjectsToMap(objects) {
+    objects.forEach((obj) => {
+      this.addToMap(obj);
+    });
+  }
 
-addToMap(mo) {
-  this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+  addToMap(mo) {
+    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
   }
 }
-
