@@ -19,42 +19,18 @@ class World {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.drawImage(
-      this.character.img,
-      this.character.x,
-      this.character.y,
-      this.character.width,
-      this.character.height
-    );
+    this.addToMap(this.character);
 
-    this.enemies.forEach((enemy) => {
-      this.ctx.drawImage(
-        enemy.img,
-        enemy.x,
-        enemy.y,
-        enemy.width,
-        enemy.height
-      );
+    this.enemies.forEach(enemy => {
+      this.addToMap(enemy);
     });
 
-    this.clouds.forEach((cloud) => {
-      this.ctx.drawImage(
-        cloud.img,
-        cloud.x,
-        cloud.y,
-        cloud.width,
-        cloud.height
-      );
+    this.clouds.forEach(cloud => {
+      this.addToMap(cloud);
     });
 
-    this.layers.forEach((layer) => {
-      this.ctx.drawImage(
-        layer.img,
-        layer.x,
-        layer.y,
-        layer.width,
-        layer.height
-      );
+    this.layers.forEach(layer => {
+      this.addToMap(layer);
     });
 
     // Draw wird immer wieder aufgerufen
@@ -63,4 +39,10 @@ class World {
       self.draw();
     });
   }
+
+
+addToMap(mo) {
+  this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+  }
 }
+
