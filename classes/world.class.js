@@ -1,20 +1,66 @@
 class World {
   character = new Character();
   enemies = [new Chicken(), new Chicken(), new Chicken()];
+  clouds = [new Cloud()];
+  layers = [
+    new layer("assets/5_background/layers/3_third_layer/1.png"),
+    new layer("assets/5_background/layers/2_second_layer/1.png"),
+    new layer("assets/5_background/layers/1_first_layer/1.png"),
+  ];
+  canvas;
   ctx;
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
+    this.canvas = canvas;
     this.draw();
   }
 
   draw() {
-this.ctx.drawImage(this.character.img, this.character.x, this.character.y,  this.character.width, this.character.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-if (this.enemies.length > 0) {
-    this.ctx.drawImage(this.Chicken.img, this.Chicken.x, this.Chicken.y,  this.Chicken.width, this.Chicken.height);
-    
-}
+    this.ctx.drawImage(
+      this.character.img,
+      this.character.x,
+      this.character.y,
+      this.character.width,
+      this.character.height
+    );
 
+    this.enemies.forEach((enemy) => {
+      this.ctx.drawImage(
+        enemy.img,
+        enemy.x,
+        enemy.y,
+        enemy.width,
+        enemy.height
+      );
+    });
+
+    this.clouds.forEach((cloud) => {
+      this.ctx.drawImage(
+        cloud.img,
+        cloud.x,
+        cloud.y,
+        cloud.width,
+        cloud.height
+      );
+    });
+
+    this.layers.forEach((layer) => {
+      this.ctx.drawImage(
+        layer.img,
+        layer.x,
+        layer.y,
+        layer.width,
+        layer.height
+      );
+    });
+
+    // Draw wird immer wieder aufgerufen
+    let self = this;
+    requestAnimationFrame(function () {
+      self.draw();
+    });
   }
 }
