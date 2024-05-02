@@ -1,10 +1,59 @@
 body {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('assets/5_background/abstract-4582133_1280.jpg');
+    background-position: center;
+    font-family: 'comic', Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
 }
 
+h1 {
+    font-size: 48px;
+}
 
-canvas{
+canvas {
     background-color: black;
+    display: block;
 }
+
+@font-face {
+    font-family: 'comic';
+    src: url('assets/fonts/Fontcomic.ttf') format('truetype');
+    /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
+@media (max-height: 480px) {
+    h1 {
+        display: none;
+    }
+}
+
+/* @media only screen and (max-width: 480px) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: top left;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+} */
