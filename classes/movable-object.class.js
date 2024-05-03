@@ -6,6 +6,7 @@ class MovableObject {
   width = 100;
   imageCache = {};
   currentImage = 0;
+  speed = 0.15;
 
   // loadImage('img/test.png')
   loadImage(path) {
@@ -25,5 +26,14 @@ class MovableObject {
     console.log("Moving right");
   }
 
-  moveLeft() {}
+  moveLeft() {
+    setInterval(() => {
+      this.x -= this.speed; // Verringere den Wert von x um 1
+
+      // Überprüfe, ob x den gewünschten Wert erreicht hat
+      if (this.x <= 0) {
+        clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+      }
+    }, 1000 / 60); // Führe die Funktion alle 1000 Millisekunden (1 Sekunde) aus
+  }
 }
