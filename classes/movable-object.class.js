@@ -37,4 +37,12 @@ class MovableObject {
       }
     }, 1000 / 60); // Führe die Funktion alle 1000 Millisekunden (1 Sekunde) aus
   }
+
+  playAnimation(images){
+
+    let i = this.currentImage % this.IMAGES_WALKING.length;
+    let path = images[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
+  }
 }

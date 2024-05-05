@@ -47,13 +47,10 @@ class Character extends MovableObject {
 
       // Überprüfe, ob x den gewünschten Wert erreicht hat
 
-
+this.playAnimation(this.IMAGES_WALKING);
 
       
-        let i = this.currentImage % this.IMAGES_WALKING.length;
-        let path = this.IMAGES_WALKING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+ 
         }
     }, 25);
   }
