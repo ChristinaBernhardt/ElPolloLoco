@@ -30,9 +30,9 @@ window.addEventListener("keydown", (e) => {
     keyboard.SPACE = true;
   }
 
-  console.log(e);
+  // console.log(e);
 
-  console.log("Hello", keyboard);
+  // console.log("Hello", keyboard);
 });
 
 
@@ -53,6 +53,6 @@ window.addEventListener("keyup", (e) => {
       keyboard.SPACE = false;
     }
   
-    console.log(e);
+    // console.log(e);
   }
 );
