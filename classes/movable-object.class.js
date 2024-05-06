@@ -28,6 +28,7 @@ class MovableObject {
     this.img = new Image(); //Abkürzung
     this.img.src = path;
   }
+  
 
   loadImages(arr) {
     arr.forEach((path) => {
@@ -57,4 +58,6 @@ class MovableObject {
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+
+  
 }

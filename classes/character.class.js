@@ -99,7 +99,6 @@ class Character extends MovableObject {
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
         this.jump();
       }
-
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
@@ -117,7 +116,6 @@ class Character extends MovableObject {
       }
     }, 25);
   }
-
 
   jump() {
     this.speedY = 30;
