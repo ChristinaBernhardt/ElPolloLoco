@@ -1,3 +1,6 @@
+// Miza - hier schon mute einbinden?
+
+
 class World {
   character = new Character();
   level = level1;
@@ -5,6 +8,7 @@ class World {
   ctx;
   keyboard;
   camera_x = 0;
+  mute = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
