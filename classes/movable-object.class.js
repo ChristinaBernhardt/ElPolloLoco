@@ -13,15 +13,14 @@ class MovableObject {
 
   applyGravity() {
     setInterval(() => {
-      if(this.isAboveGround() || this.speedY > 0){
+      if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
-      this.speedY -= this.acceleration;
-    }
+        this.speedY -= this.acceleration;
+      }
     }, 1000 / 25);
   }
 
-
-  isAboveGround(){
+  isAboveGround() {
     return this.y < 217;
   }
   // loadImage('img/test.png')
@@ -43,14 +42,13 @@ class MovableObject {
   // }
 
   moveLeft() {
-    setInterval(() => {
-      this.x -= this.speed; // Verringere den Wert von x um 1
+    this.x -= this.speed; // Verringere den Wert von x um 1
 
-      // Überprüfe, ob x den gewünschten Wert erreicht hat
-      if (this.x <= 0) {
-        clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
-      }
-    }, 1000 / 60); // Führe die Funktion alle 1000 Millisekunden (1 Sekunde) aus
+  }
+
+  moveRight() {
+    this.x += this.speed;
+    this.otherDirection = false;
   }
 
   playAnimation(images) {

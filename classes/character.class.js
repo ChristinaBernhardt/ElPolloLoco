@@ -88,18 +88,16 @@ class Character extends MovableObject {
     setInterval(() => {
       this.walking_sound.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.x += this.speed;
-        this.otherDirection = false;
+        this.moveRight();
         this.walking_sound.play();
       }
       if (this.world.keyboard.LEFT && this.x > -615) {
-        this.x -= this.speed;
+        this.moveLeft();
         this.otherDirection = true;
         this.walking_sound.play();
       }
-      // console.log("this.speedY", this.speedY);
-      if (this.world.keyboard.UP && this.y > 229 ) {
-        this.speedY = 30;
+      if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        this.jump();
       }
 
       this.world.camera_x = -this.x + 100;
@@ -118,5 +116,10 @@ class Character extends MovableObject {
         }
       }
     }, 25);
+  }
+
+
+  jump() {
+    this.speedY = 30;
   }
 }
