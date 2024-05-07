@@ -21,10 +21,10 @@ class Cloud extends MovableObject {
 
   animate() {
     setInterval(() => {
-    this.moveLeft();
+    this.moveRight();
        
     this.playAnimation(this.IMAGES_CLOUDS);
-    },50)};
+    },1000)};
   }
 
 
