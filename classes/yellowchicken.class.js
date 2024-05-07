@@ -24,8 +24,8 @@ class Yellowchicken extends MovableObject {
   animate(){
      setInterval(() => {
       this.playAnimation(this.IMAGES_WALKING);
-    },100);
-      this.moveLeft();
+
+      this.moveLeft();    },100);
   }
   
   
