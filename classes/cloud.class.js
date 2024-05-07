@@ -11,10 +11,8 @@ class Cloud extends MovableObject {
     "assets/5_background/layers/4_clouds/full.png",
   ];
 
-  currentImageIndex = 0;
-
   constructor() {
-    super().loadImage(this.IMAGES_CLOUDS[0]);
+    super().loadImage("assets/5_background/layers/4_clouds/1.png");
     this.loadImages(this.IMAGES_CLOUDS);
 
     this.x = Math.random() * 500;
@@ -22,11 +20,15 @@ class Cloud extends MovableObject {
   }
 
   animate() {
+    setInterval(() => {
     this.moveLeft();
-    // Wenn alle Bilder geladen sind, können wir zu einem zufälligen Bild wechseln
-    if (this.imagesLoaded) {
-      const randomIndex = Math.floor(Math.random() * this.IMAGES_CLOUDS.length);
-      this.setImage(this.IMAGES_CLOUDS[randomIndex]);
-    }
+       
+    this.playAnimation(this.IMAGES_CLOUDS);
+    },50)};
   }
-}
+
+
+
+
+
+
