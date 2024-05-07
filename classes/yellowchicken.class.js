@@ -15,7 +15,7 @@ class Yellowchicken extends MovableObject {
       super().loadImage("assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
       this.loadImages(this.IMAGES_WALKING);
       this.x = 200 + Math.random() * 2500;
-      this.speed = 0.15 + Math.random() * 0.5;
+      this.speed = 0.7 + Math.random() * 0.5;
       this.animate();
         
              
