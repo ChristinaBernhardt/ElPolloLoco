@@ -4,6 +4,7 @@ class Cloud extends MovableObject {
   y = 20;
   height = 250;
   width = 400;
+  speed = 0.015;
 
   IMAGES_CLOUDS = [
     "assets/5_background/layers/4_clouds/1.png",
@@ -15,16 +16,15 @@ class Cloud extends MovableObject {
     super().loadImage("assets/5_background/layers/4_clouds/1.png");
     this.loadImages(this.IMAGES_CLOUDS);
 
-    this.x = Math.random() * 500;
+    this.x = Math.random() * 2500;
     this.animate();
   }
 
   animate() {
     setInterval(() => {
     this.moveRight();
-       
-    this.playAnimation(this.IMAGES_CLOUDS);
-    },1000)};
+           
+    },60/1000)};
   }
 
 
