@@ -15,13 +15,25 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.checkCollisions();
   }
 
   setWorld() {
     this.character.world = this;
   }
 
+  checkCollisions() {
+    setInterval(() => {
+      this.level.enemies.forEach((enemy) => {
+        if (this.character.isColliding(enemy)) {
+          console.log("collision with Character ", enemy);
+        }
+      });
+    }, 1000);
+  }
+
   draw() {
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.layers);
@@ -50,13 +62,12 @@ class World {
       this.ctx.scale(-1, 1);
       mo.x = mo.x * -1;
     }
-    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-    // Red rectangle
-    this.ctx.beginPath();
-    this.ctx.lineWidth = "5";
-    this.ctx.strokeStyle = "red";
-    this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
-    this.ctx.stroke();
+
+    mo.draw(this.ctx);
+
+
+    mo.drawFrame(this.ctx);
+    
 
     if (mo.otherDirection) {
       this.ctx.restore();

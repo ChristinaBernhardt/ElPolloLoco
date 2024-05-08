@@ -29,6 +29,31 @@ class MovableObject {
     this.img.src = path;
   }
   
+  draw(ctx){
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
+
+drawFrame(ctx){
+ if(this instanceof Character || this instanceof Chicken || this instanceof Yellowchicken){
+  ctx.beginPath();
+  ctx.lineWidth = "5";
+  ctx.strokeStyle = "red";
+  ctx.rect(this.x, this.y, this.width, this.height);
+  ctx.stroke();
+}
+}
+
+
+  // Bessere Formel zur Kollisionsberechnung (Genauer)
+  isColliding (obj) {
+    console.log('character', this.x, this.y, this.height, this.width, this.offsetY);
+    console.log('enemy' , obj.x, obj.y, obj.height, obj.width);
+      return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
+            (this.y + this.height) >= obj.y &&
+            (this.y) <= (obj.y + obj.height) 
+             // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
+
+}
 
   loadImages(arr) {
     arr.forEach((path) => {
@@ -38,9 +63,7 @@ class MovableObject {
     });
   }
 
-  // moveRight() {
-  //   console.log("Moving right");
-  // }
+
 
   moveLeft() {
     this.x -= this.speed; // Verringere den Wert von x um 1
