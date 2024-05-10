@@ -10,6 +10,8 @@ class MovableObject {
   otherDirection = false;
   speedY = 0;
   acceleration = 2.5;
+  energy = 100;
+  lastHit = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -46,11 +48,12 @@ drawFrame(ctx){
 
   // Bessere Formel zur Kollisionsberechnung (Genauer)
   isColliding (obj) {
-    console.log('character', this.x, this.y, this.height, this.width, this.offsetY);
-    console.log('enemy' , obj.x, obj.y, obj.height, obj.width);
+    // console.log('character', this.x, this.y, this.height, this.width, this.offsetY);
+    // console.log('enemy' , obj.x, obj.y, obj.height, obj.width);
       return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
             (this.y + this.height) >= obj.y &&
             (this.y) <= (obj.y + obj.height) 
+ 
              // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
 
 }
@@ -82,5 +85,25 @@ drawFrame(ctx){
     this.currentImage++;
   }
 
+hit(){
+
+  this.energy -= 5;
+  if(this.energy < 0) {
+    this.energy = 0;
+  } else {
+    this.lastHit = new Date().getTime();
+
+  }
+}
+
+isHurt(){
+let timepassed = new Date().getTime() - this.lastHit;
+timepassed = timepassed / 1000;
+return timepassed < 1;
+}
+
+isDead(){
+return this.energy == 0;
+};
   
 }
