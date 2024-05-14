@@ -1,5 +1,5 @@
 class Salsabottle extends MovableObject {
-    height = 100;
+    height = 50;
     width = 50;
   
   IMAGES_SALSABOTTLE = [

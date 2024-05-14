@@ -19,6 +19,7 @@ class MovableObject extends DrawableObject {
     return this.y < 217;
   }
 
+
     // Bessere Formel zur Kollisionsberechnung (Genauer)
   isColliding (obj) {
     // console.log('character', this.x, this.y, this.height, this.width, this.offsetY);

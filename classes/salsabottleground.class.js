@@ -1,5 +1,5 @@
 class Salsabottleground extends MovableObject {
-    height = 100;
+    height = 50;
     width = 50;
   
 IMAGES_SALSABOTTLEONGROUND = [
@@ -10,8 +10,12 @@ IMAGES_SALSABOTTLEONGROUND = [
     constructor() {
       super().loadImage("assets/6_salsa_bottle/1_salsa_bottle_on_ground.png");
       this.loadImages(this.IMAGES_SALSABOTTLEONGROUND);
+
+      var imageIndex = Math.round(Math.random() * 1);
+      console.log(imageIndex);
+      this.loadImage(this.IMAGES_SALSABOTTLEONGROUND[imageIndex]);
       this.x = 200 + Math.random() * 3000;
-      this.y = 100 + Math.random() * 200;
+      this.y = 380;
       // this.animate();  }
   
   // animate(){
@@ -20,4 +24,7 @@ IMAGES_SALSABOTTLEONGROUND = [
   //   },1000);
   // }
   }
+
+
+
   }
