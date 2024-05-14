@@ -10,8 +10,8 @@ IMAGES_COINS = [
   constructor() {
     super().loadImage("assets/8_coin/coin_1.png");
     this.loadImages(this.IMAGES_COINS);
-    this.x = 200 + Math.random() * 2000;
-    this.y = 200 + Math.random() * 300;
+    this.x = 200 + Math.random() * 3000;
+    this.y = 100 + Math.random() * 200;
     // this.animate();  }
 
 // animate(){
