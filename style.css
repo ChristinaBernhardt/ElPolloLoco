@@ -21,6 +21,11 @@ canvas {
     display: block;
 }
 
+.overlay {
+    background-image: url('assets/5_background/abstract-4582133_1280.jpg');
+
+}
+
 @font-face {
     font-family: 'comic';
     src: url('assets/fonts/Fontcomic.ttf') format('truetype');

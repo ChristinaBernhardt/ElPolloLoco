@@ -113,10 +113,6 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_JUMPING);
       } else {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-          // Verringere den Wert von x um 1
-
-          // Überprüfe, ob x den gewünschten Wert erreicht hat
-
           this.playAnimation(this.IMAGES_WALKING);
         }
       }

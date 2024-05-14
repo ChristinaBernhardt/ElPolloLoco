@@ -2,14 +2,15 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
-
-
-
+function startGame() {
+document.getElementById('overlay').innerHTML = /*html*/`
+<button onclick=init()>Start</button>
+`
+}
 
 function init() {
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
-
   console.log("My Character is", world.character);
 }
 

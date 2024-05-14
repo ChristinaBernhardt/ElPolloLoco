@@ -19,12 +19,7 @@ class MovableObject extends DrawableObject {
     return this.y < 217;
   }
 
-  
-
-
-
-
-  // Bessere Formel zur Kollisionsberechnung (Genauer)
+    // Bessere Formel zur Kollisionsberechnung (Genauer)
   isColliding (obj) {
     // console.log('character', this.x, this.y, this.height, this.width, this.offsetY);
     // console.log('enemy' , obj.x, obj.y, obj.height, obj.width);
@@ -33,16 +28,10 @@ class MovableObject extends DrawableObject {
             (this.y) <= (obj.y + obj.height) 
  
              // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-
 }
-
-
-
-
 
   moveLeft() {
     this.x -= this.speed; // Verringere den Wert von x um 1
-
   }
 
   moveRight() {
