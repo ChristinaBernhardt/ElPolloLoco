@@ -8,9 +8,10 @@ class Level {
 
 
   // achte auf die Reihenfolge Du Depp
-  constructor(enemies, coins, clouds, layers, endboss ) {
+  constructor(enemies, coins, salsas, clouds, layers, endboss ) {
     this.enemies = enemies;
     this.coins = coins;
+    this.salsas = salsas;
     this.clouds = clouds;
     this.layers = layers;
     this.endboss = endboss;
