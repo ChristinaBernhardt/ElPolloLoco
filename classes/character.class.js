@@ -148,7 +148,7 @@ class Character extends MovableObject {
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        this.currentImage = 0;
+
         this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
