@@ -20,6 +20,7 @@ class World {
     this.draw();
     this.setWorld();
     this.checkCollisions();
+    this.checkContact();
   }
 
   setWorld() {
@@ -41,6 +42,25 @@ class World {
       });
     }, 200);
   }
+
+  checkContact() {
+    setInterval(() => {
+      this.level.salsas.forEach((salsa) => {
+        if (this.character.isColliding(salsa)) {
+          this.character.addBottle();
+          // this.statusBar.setPercentage(this.character.energy);
+          console.log(
+            "collision with Character, salsa ",
+            // this.character.energy
+          );
+       
+        }
+      });
+    }, 200);
+  }
+
+
+
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

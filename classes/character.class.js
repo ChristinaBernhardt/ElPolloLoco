@@ -2,6 +2,7 @@ class Character extends MovableObject {
   x = 200;
   y = 230;
   speed = 10;
+  bottles = 0;
 
   IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
@@ -147,6 +148,7 @@ class Character extends MovableObject {
           this.dead = true;
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
+       
       } else if (this.isHurt()) {
 
         this.scream_sound.play();
@@ -165,5 +167,20 @@ class Character extends MovableObject {
     this.jumping_sound.play();
     this.speedY = 30;
     this.currentImage = 0;
-  }
-}
+    }
+
+
+    addBottle() {
+      this.bottles++; // Erhöht die Anzahl der Flaschen um 1
+      console.log("Anzahl der Flaschen:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
+      
+      // Annahme: Sie haben ein Array mit Flaschen namens 'bottleArray'
+      if (this.bottleArray.length > 0) {
+        // Entfernt die erste Flasche aus dem Array
+        this.bottleArray.splice(0, 1);
+        console.log("Eine Flasche wurde aus dem Array entfernt.");
+      } else {
+        console.log("Das Array ist bereits leer. Keine Flasche wurde entfernt.");
+      }
+      this.draw();
+    }}

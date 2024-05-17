@@ -1,6 +1,9 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let intervalIds = [];
+let i = 1;
+
 
 // function startGame() {
 // document.getElementById('overlay').innerHTML = /*html*/`
@@ -63,3 +66,32 @@ window.addEventListener("keyup", (e) => {
     // console.log(e);
   }
 );
+
+// Miza???
+// function clearAllIntervals() {
+//   for (let i = 1; i < 9999; i++) window.clearInterval(i);
+// };
+
+
+// function setStoppableInterval(fn, time) {
+// let id = setInterval(fn, time);
+// intervalIds.push(id);
+// }
+
+// setStoppableInterval(sayHello , 500);
+// setStoppableInterval(sayGoodbye , 500);
+
+// function stopGame(){
+// intervalIds.forEach(clearInterval);
+// }
+
+// function sayHello(){
+//   console.log('Hello', i);
+//   i++;
+// }
+
+
+// function sayGoodbye(){
+//   console.log('Goodbye', i);
+//   i++;
+// }
