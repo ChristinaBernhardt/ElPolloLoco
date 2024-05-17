@@ -154,10 +154,10 @@ class Character extends MovableObject {
         const gameOverDiv = document.getElementById('game-over');
         gameOverDiv.style.display = 'block';
     
-        // Nach 3 Sekunden zur index.html weiterleiten
+        // Nach 1 Sekunde zur index.html weiterleiten
         setTimeout(() => {
           window.location.href = 'index.html';
-        }, 3000);
+        }, 1000);
     
       } else if (this.isHurt()) {
         this.scream_sound.play();
