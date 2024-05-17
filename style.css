@@ -91,6 +91,15 @@ text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
 color: black;
   }
 
+  #game-over {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
 @font-face {
     font-family: 'comic';
     src: url('assets/fonts/Fontcomic.ttf') format('truetype');

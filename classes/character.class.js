@@ -149,9 +149,17 @@ class Character extends MovableObject {
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
         console.log('Game finished');
-   
+    
+        // "Game Over"-Bild anzeigen
+        const gameOverDiv = document.getElementById('game-over');
+        gameOverDiv.style.display = 'block';
+    
+        // Nach 3 Sekunden zur index.html weiterleiten
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 3000);
+    
       } else if (this.isHurt()) {
-
         this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {

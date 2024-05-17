@@ -59,8 +59,7 @@ class MovableObject extends DrawableObject {
     }
     else {
       clearAllIntervals();
-      showAndHideImage();
-      init();
+
     }
   }
 
