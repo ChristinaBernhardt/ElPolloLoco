@@ -47,7 +47,8 @@ class World {
     setInterval(() => {
       this.level.salsas.forEach((salsa) => {
         if (this.character.isColliding(salsa)) {
-          this.character.addBottle();
+          this.character.addBottle(salsa);
+          this.level.deleteSalsa(salsa)
           // this.statusBar.setPercentage(this.character.energy);
           console.log(
             "collision with Character, salsa ",

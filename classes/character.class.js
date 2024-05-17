@@ -146,28 +146,18 @@ class Character extends MovableObject {
         if (!this.dead) {
           this.currentImage = 0;
           this.dead = true;
+          setTimeout(() => {
+            stopGame();
+            console.log("Game finished");
+            let gameOverDiv = document.getElementById("game-over");
+            gameOverDiv.style.display = "block";
+            // Nach 1 Sekunde zur index.html weiterleiten
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 2000);
+          }, 2000);
         }
-        setTimeout(() => {
         this.playAnimationOnce(this.IMAGES_DEAD);
-        console.log('Game finished');
-      }, 12000);
-    
-      setTimeout(() => {
-        // "Game Over"-Bild anzeigen
-        let gameOverDiv = document.getElementById('game-over');
-        gameOverDiv.style.display = 'block';
-      }, 15000);
-    
-
-        // "Game Over"-Bild anzeigen
-        let gameOverDiv = document.getElementById('game-over');
-        gameOverDiv.style.display = 'block';
-    
-        // Nach 1 Sekunde zur index.html weiterleiten
-        setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 3000);
-    
       } else if (this.isHurt()) {
         this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
@@ -185,20 +175,11 @@ class Character extends MovableObject {
     this.jumping_sound.play();
     this.speedY = 30;
     this.currentImage = 0;
-    }
+  }
 
+  addBottle(salsa) {
+    this.bottles++; // Erhöht die Anzahl der Flaschen um 1
+    console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
 
-    addBottle() {
-      this.bottles++; // Erhöht die Anzahl der Flaschen um 1
-      console.log("Anzahl der Flaschen:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
-      
-      // Annahme: Sie haben ein Array mit Flaschen namens 'bottleArray'
-      if (this.bottleArray.length > 0) {
-        // Entfernt die erste Flasche aus dem Array
-        this.bottleArray.splice(0, 1);
-        console.log("Eine Flasche wurde aus dem Array entfernt.");
-      } else {
-        console.log("Das Array ist bereits leer. Keine Flasche wurde entfernt.");
-      }
-      this.draw();
-    }}
+  }
+}
