@@ -57,6 +57,11 @@ class MovableObject extends DrawableObject {
       this.currentImage++;
    
     }
+    else {
+      clearAllIntervals();
+      showAndHideImage();
+      init();
+    }
   }
 
   hit() {
@@ -78,4 +83,24 @@ class MovableObject extends DrawableObject {
     return this.dead;
 
   }
+
+  showAndHideImage() {
+    const imageContainer = document.getElementById('image-container');
+
+    // Bild einblenden
+    imageContainer.style.display = 'block';
+    imageContainer.classList.add('fade-in');
+
+    // Nach 3 Sekunden Bild ausblenden
+    setTimeout(() => {
+        imageContainer.classList.remove('fade-in');
+        imageContainer.classList.add('fade-out');
+    }, 3000);
+
+    // Nach der Ausblend-Animation (1 Sekunde) das Bild komplett ausblenden
+    setTimeout(() => {
+        imageContainer.style.display = 'none';
+        imageContainer.classList.remove('fade-out');
+    }, 4000);
+}
 }

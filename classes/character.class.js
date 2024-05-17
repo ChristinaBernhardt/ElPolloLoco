@@ -148,7 +148,8 @@ class Character extends MovableObject {
           this.dead = true;
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
-       
+        console.log('Game finished');
+   
       } else if (this.isHurt()) {
 
         this.scream_sound.play();
