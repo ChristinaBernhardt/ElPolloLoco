@@ -49,13 +49,18 @@ class MovableObject extends DrawableObject {
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+
+
+
+
   playAnimationOnce(images) {
     if (this.currentImage < images.length) {
+      setTimeout(() => {
       let i = this.currentImage;
       let path = images[i];
       this.img = this.imageCache[path];
       this.currentImage++;
-   
+    }, 12000);
     }
     else {
       clearAllIntervals();

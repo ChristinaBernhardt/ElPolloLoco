@@ -2,6 +2,7 @@ class Endboss extends MovableObject {
         y = 80;
         height = 370;
         width = 350;
+        speed = 0.5;
    
       
       
@@ -56,19 +57,34 @@ class Endboss extends MovableObject {
           this.loadImages(this.IMAGES_ATTACK);
           this.loadImages(this.IMAGES_HURT);
           this.loadImages(this.IMAGES_DEAD);
-          this.x = 3400;
+          this.x = 4000;
         //   this.speed = 0.15 + Math.random() * 0.5;
           this.animate();
             
                  
       }
       
-      animate(){
-         setInterval(() => {
-            this.playAnimation(this.IMAGES_ALERT);},500);
-        //   this.moveLeft();
-      }
+      // animate(){
+      //    setInterval(() => {
+      //       this.playAnimation(this.IMAGES_ALERT);},500);
+      //   //   this.moveLeft();
+      // }
       
       
+      animate() {
+        setInterval(() => {
+          this.moveLeft();
+          // Überprüfe, ob x den gewünschten Wert erreicht hat
+          if (this.x <= 0) {
+            clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+          }
+        }, 1000 / 60); // Führe die Funktion alle 1000 Millisekunden (1 Sekunde) aus
+        setInterval(() => {
+          this.playAnimation(this.IMAGES_WALKING);
+        }, 100);
       }
+    }
+
+
+     
       
