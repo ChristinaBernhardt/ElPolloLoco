@@ -12,7 +12,6 @@ class World {
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
 
-
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -20,7 +19,8 @@ class World {
     this.draw();
     this.setWorld();
     this.checkCollisions();
-    this.checkContact();
+    this.checkContactSalsa();
+    this.checkContactCoin();
   }
 
   setWorld() {
@@ -37,31 +37,42 @@ class World {
             "collision with Character, energy ",
             this.character.energy
           );
-       
         }
       });
     }, 200);
   }
 
-  checkContact() {
+  checkContactSalsa() {
     setInterval(() => {
       this.level.salsas.forEach((salsa) => {
         if (this.character.isColliding(salsa)) {
           this.character.addBottle(salsa);
-          this.level.deleteSalsa(salsa)
+          this.level.deleteSalsa(salsa);
           // this.statusBar.setPercentage(this.character.energy);
           console.log(
-            "collision with Character, salsa ",
+            "collision with Character, salsa "
             // this.character.energy
           );
-       
         }
       });
     }, 200);
   }
 
-
-
+  checkContactCoin() {
+    setInterval(() => {
+      this.level.coins.forEach((coin) => {
+        if (this.character.isColliding(coin)) {
+          this.character.addCoin(coin);
+          this.level.deleteCoin(coin);
+          // this.statusBar.setPercentage(this.character.energy);
+          console.log(
+            "collision with Character, coin "
+            // this.character.energy
+          );
+        }
+      });
+    }, 200);
+  }
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -73,7 +84,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsas);
-   
+
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
     this.addToMap(this.statusBarCoin);
@@ -114,5 +125,4 @@ class World {
     this.ctx.restore();
     mo.x = mo.x * -1;
   }
-
 }

@@ -3,6 +3,7 @@ class Character extends MovableObject {
   y = 230;
   speed = 10;
   bottles = 0;
+  coins = 0;
 
   IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
@@ -180,6 +181,13 @@ class Character extends MovableObject {
   addBottle(salsa) {
     this.bottles++; // Erhöht die Anzahl der Flaschen um 1
     console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
+
+  }
+
+
+  addCoin(coin) {
+    this.coins++; // Erhöht die Anzahl der Flaschen um 1
+    console.log("Anzahl der Coins hier:", this.coins); // Gibt die neue Anzahl der Flaschen aus
 
   }
 }

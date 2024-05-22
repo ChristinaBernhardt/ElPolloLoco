@@ -32,6 +32,7 @@
 </head>
 
 <body>
+  <div id="fullscreen">
   <h1>El Pollo Loco</h1>
   <Canvas id="canvas" class="canvas display-none" width="720px" height="480px" ></Canvas>
 
@@ -40,6 +41,7 @@
       <img src="assets/9_intro_outro_screens/start/startscreen_1.png" alt="Snow" style="width:100%;">
       <a class="top-left hover" href="Datenschutzerklärung.html">Datenschutz</a>
       <a class="bottom-left hover" onclick="init()">Start Game</a>
+      <a class="centered hover" onclick="enterFullscreen(document.documentElement)">Fullscreen</a>
       <a class="top-right hover" href="Impressum.html">Impressum</a>
       <a class="bottom-right hover" href="Anleitung.html">Anleitung</a>
  
@@ -49,7 +51,7 @@
   <div id="game-over">
     <img src="assets/9_intro_outro_screens/game_over/oh no you lost!.png" alt="Game Over">
 </div>
-
+</div>
 
 </body>
 

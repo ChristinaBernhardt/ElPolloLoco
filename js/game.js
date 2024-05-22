@@ -12,6 +12,7 @@ let i = 1;
 // }
 
 function init() {
+  initLevel();
   canvas = document.getElementById('canvas');
   document.getElementById('overlay').classList.add('display-none');
   canvas.style.display = 'block';
@@ -77,7 +78,24 @@ function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 };
 
+function enterFullscreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+    element.msRequestFullscreen();
+  } else if(element.webkitRequestFullscreen) {  // iOS Safari
+    element.webkitRequestFullscreen();
+  }
+}
 
+
+function exitFullscreen() {
+  if(document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if(document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+}
 // function setStoppableInterval(fn, time) {
 // let id = setInterval(fn, time);
 // intervalIds.push(id);

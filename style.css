@@ -79,7 +79,7 @@ display: none;
   /* Centered text */
   .centered {
     position: absolute;
-    top: 50%;
+    bottom: 80px;
     left: 50%;
     transform: translate(-50%, -50%);
   }
