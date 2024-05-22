@@ -118,6 +118,7 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
+      // console.log(this.x);
       if (!this.dead) {
         this.walking_sound.pause();
         if (

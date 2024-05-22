@@ -27,46 +27,22 @@ class Chicken extends MovableObject {
       if (this.x <= 0) {
         clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
       }
-    }, 1000 / 60); // Führe die Funktion alle 1000 Millisekunden (1 Sekunde) aus
+    }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
+  
     setInterval(() => {
       this.playAnimation(this.IMAGES_WALKING);
     }, 100);
-
-
-
-
-
-    
+  
+    setInterval(() => {
+      if (this.energy === 0) {
+        if (!this.dead) {
+          this.currentImage = 0;
+          this.dead = true;
+          setTimeout(() => {
+            this.playAnimationOnce(this.IMAGES_DEAD);
+          }, 2000); // Spiele die Todesanimation nach 2 Sekunden ab
+        }
+      }  
+    }, 50);
   }
 }
-
-
-//   setInterval(() => {
-//     if (this.energy === 0) {
-//       if (!this.dead) {
-//         this.currentImage = 0;
-//         this.dead = true;
-//         setTimeout(() => {
-//           stopGame();
-//           console.log("Game finished");
-//           let gameOverDiv = document.getElementById("game-over");
-//           gameOverDiv.style.display = "block";
-//           // Nach 1 Sekunde zur index.html weiterleiten
-//           setTimeout(() => {
-//             window.location.href = "index.html";
-//           }, 2000);
-//         }, 2000);
-//       }
-//       this.playAnimationOnce(this.IMAGES_DEAD);
-//     } else if (this.isHurt()) {
-//       this.scream_sound.play();
-//       this.playAnimation(this.IMAGES_HURT);
-//     } else if (this.isAboveGround()) {
-//       this.playAnimationOnce(this.IMAGES_JUMPING);
-//     } else {
-//       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-//         this.playAnimation(this.IMAGES_WALKING);
-//       }
-//     }
-//   }, 50);
-// }
