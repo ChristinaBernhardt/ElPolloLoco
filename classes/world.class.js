@@ -48,10 +48,10 @@ class World {
         if (this.character.isColliding(salsa)) {
           this.character.addBottle(salsa);
           this.level.deleteSalsa(salsa);
-          // this.statusBar.setPercentage(this.character.energy);
+          this.statusBarBottle.setPercentage(this.character.bottles);
           console.log(
-            "collision with Character, salsa "
-            // this.character.energy
+            "collision with Character, salsa ",
+            this.character.bottles
           );
         }
       });
@@ -64,10 +64,9 @@ class World {
         if (this.character.isColliding(coin)) {
           this.character.addCoin(coin);
           this.level.deleteCoin(coin);
-          // this.statusBar.setPercentage(this.character.energy);
+          this.statusBarCoin.setPercentage(this.character.coins);
           console.log(
-            "collision with Character, coin "
-            // this.character.energy
+            "collision with Character, coin ", this.character.coins
           );
         }
       });

@@ -106,16 +106,13 @@ class Character extends MovableObject {
 
   constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
-
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_LONG_IDLE);
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
-
     this.applyGravity();
-
     this.animate();
   }
 
@@ -179,14 +176,14 @@ class Character extends MovableObject {
   }
 
   addBottle(salsa) {
-    this.bottles++; // Erhöht die Anzahl der Flaschen um 1
+    this.bottles += 10; // Erhöht die Anzahl der Flaschen um 10
     console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
 
   }
 
 
   addCoin(coin) {
-    this.coins++; // Erhöht die Anzahl der Flaschen um 1
+    this.coins += 5; // Erhöht die Anzahl der Coins um 5
     console.log("Anzahl der Coins hier:", this.coins); // Gibt die neue Anzahl der Flaschen aus
 
   }
