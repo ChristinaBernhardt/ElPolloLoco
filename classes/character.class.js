@@ -6,11 +6,14 @@ class Character extends MovableObject {
   coins = 0;
 
   offset = {
-    top: 120,
-    bottom: 30,
-    left: 40,
-    right: 30,
+    top: 70,
+    bottom: 0,
+    left: 0,
+    right: 0,
   };
+
+
+
 
   IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",

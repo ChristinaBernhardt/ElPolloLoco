@@ -1,11 +1,12 @@
 class StatusBar extends DrawableObject {
   IMAGES = [
-    "assets/7_statusbars/2_statusbar_endboss/green/green0.png",
-    "assets/7_statusbars/2_statusbar_endboss/green/green20.png",
-    "assets/7_statusbars/2_statusbar_endboss/green/green40.png",
-    "assets/7_statusbars/2_statusbar_endboss/green/green60.png",
-    "assets/7_statusbars/2_statusbar_endboss/green/green80.png",
-    "assets/7_statusbars/2_statusbar_endboss/green/green100.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/60.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
+    "assets/7_statusbars/1_statusbar/2_statusbar_health/green/100.png",
+
   ];
 
   percentage = 100;

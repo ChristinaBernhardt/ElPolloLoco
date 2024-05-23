@@ -11,6 +11,7 @@ class World {
   statusBar = new StatusBar();
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
+  statusBarEndboss = new StatusBarEndboss();
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -31,12 +32,17 @@ class World {
     setInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-          console.log(
-            "collision with Character, energy ",
-            this.character.energy
-          );
+          if (this.character.isAboveGround()) {
+            console.log("Treffer");
+            // this.enemy.hit();
+          } else {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+            console.log(
+              "collision with Character, energy ",
+              this.character.energy
+            );
+          }
         }
       });
     }, 200);
@@ -65,9 +71,7 @@ class World {
           this.character.addCoin(coin);
           this.level.deleteCoin(coin);
           this.statusBarCoin.setPercentage(this.character.coins);
-          console.log(
-            "collision with Character, coin ", this.character.coins
-          );
+          console.log("collision with Character, coin ", this.character.coins);
         }
       });
     }, 200);
@@ -88,6 +92,7 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.statusBarCoin);
     this.addToMap(this.statusBarBottle);
+    this.addToMap(this.statusBarEndboss);
 
     // Draw wird immer wieder aufgerufen
     let self = this;
