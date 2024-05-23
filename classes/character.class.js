@@ -5,6 +5,13 @@ class Character extends MovableObject {
   bottles = 0;
   coins = 0;
 
+  offset = {
+    top: 120,
+    bottom: 30,
+    left: 40,
+    right: 30,
+  };
+
   IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
     "assets/2_character_pepe/1_idle/idle/I-2.png",
@@ -101,8 +108,8 @@ class Character extends MovableObject {
 
   world;
   walking_sound = new Audio("audio/walk.mp3");
-  jumping_sound = new Audio("audio/jump.mp3");
-  scream_sound = new Audio("audio/jump1.mp3");
+  jumping_sound = new Audio("audio/walk.mp3");
+  scream_sound = new Audio("audio/walk.mp3");
 
   constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
@@ -126,12 +133,12 @@ class Character extends MovableObject {
           this.x < this.world.level.level_end_x
         ) {
           this.moveRight();
-          this.walking_sound.play();
+          // this.walking_sound.play();
         }
         if (this.world.keyboard.LEFT && this.x > -615) {
           this.moveLeft();
           this.otherDirection = true;
-          this.walking_sound.play();
+          // this.walking_sound.play();
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
           this.jump();
@@ -158,7 +165,7 @@ class Character extends MovableObject {
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        this.scream_sound.play();
+        // this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
         this.playAnimationOnce(this.IMAGES_JUMPING);
@@ -171,7 +178,7 @@ class Character extends MovableObject {
   }
 
   jump() {
-    this.jumping_sound.play();
+    // this.jumping_sound.play();
     this.speedY = 30;
     this.currentImage = 0;
   }

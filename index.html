@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html translate="no">
 
 <head>
   <meta charset="UTF-8">
@@ -17,7 +18,7 @@
   <script src="classes/salsabottle.class.js"></script>
   <script src="classes/salsabottleground.class.js"></script>
   <script src="classes/cloud.class.js"></script>
-    <script src="classes/status-bar.class.js"></script>
+  <script src="classes/status-bar.class.js"></script>
   <script src="classes/status-bar-coin.class.js"></script>
   <script src="classes/status-bar-bottle.class.js"></script>
   <script src="classes/world.class.js"></script>
@@ -33,25 +34,25 @@
 
 <body>
   <div id="fullscreen">
-  <h1>El Pollo Loco</h1>
-  <Canvas id="canvas" class="canvas display-none" width="720px" height="480px" ></Canvas>
+    <h1>El Pollo Loco</h1>
+    <Canvas id="canvas" class="canvas display-none" width="720px" height="480px"></Canvas>
 
-  <div id="overlay" class="overlay" >
-    <div class="container">
-      <img src="assets/9_intro_outro_screens/start/startscreen_1.png" alt="Snow" style="width:100%;">
-      <a class="top-left hover" href="Datenschutzerklärung.html">Datenschutz</a>
-      <a class="bottom-left hover" onclick="init()">Start Game</a>
-      <a class="centered hover" onclick="enterFullscreen(document.documentElement)">Fullscreen</a>
-      <a class="top-right hover" href="Impressum.html">Impressum</a>
-      <a class="bottom-right hover" href="Anleitung.html">Anleitung</a>
- 
+    <div id="overlay" class="overlay">
+      <div class="container">
+        <img src="assets/9_intro_outro_screens/start/startscreen_1.png" alt="Snow" style="width:100%;">
+        <a class="top-left hover" href="Datenschutzerklärung.html">Datenschutz</a>
+        <a class="bottom-left hover" onclick="init()">Start Game</a>
+        <a class="centered hover" onclick="enterFullscreen(document.documentElement)">Fullscreen</a>
+        <a class="top-right hover" href="Impressum.html">Impressum</a>
+        <a class="bottom-right hover" href="Anleitung.html">Anleitung</a>
+
+      </div>
+    </div>
+
+    <div id="game-over">
+      <img src="assets/9_intro_outro_screens/game_over/oh no you lost!.png" alt="Game Over">
     </div>
   </div>
-
-  <div id="game-over">
-    <img src="assets/9_intro_outro_screens/game_over/oh no you lost!.png" alt="Game Over">
-</div>
-</div>
 
 </body>
 
