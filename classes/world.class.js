@@ -33,8 +33,8 @@ class World {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           if (this.character.isAboveGround()) {
-            console.log("Treffer");
-            // this.enemy.hit();
+            console.log(enemy);
+            this.level.deleteEnemy(enemy);
           } else {
             this.character.hit();
             this.statusBar.setPercentage(this.character.energy);
