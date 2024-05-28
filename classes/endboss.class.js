@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
 
   
   animate() {
-    console.log(this.x);
+    // console.log(this.x);
     let i = 0;
     setInterval(() => {
       if (i < 10) {

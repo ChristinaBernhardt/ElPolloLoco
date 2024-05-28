@@ -17,7 +17,7 @@ function init() {
   document.getElementById('overlay').classList.add('display-none');
   canvas.style.display = 'block';
   world = new World(canvas, keyboard);
-  console.log("My Character is", world.character);
+  // console.log("My Character is", world.character);
 }
 
 // let space = false;

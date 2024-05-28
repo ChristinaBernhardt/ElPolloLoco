@@ -160,7 +160,7 @@ class Character extends MovableObject {
           this.dead = true;
           setTimeout(() => {
             stopGame();
-            console.log("Game finished");
+            // console.log("Game finished");
             let gameOverDiv = document.getElementById("game-over");
             gameOverDiv.style.display = "block";
             // Nach 1 Sekunde zur index.html weiterleiten
@@ -191,14 +191,14 @@ class Character extends MovableObject {
 
   addBottle(salsa) {
     this.bottles += 10; // Erhöht die Anzahl der Flaschen um 10
-    console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
+    // console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
 
   }
 
 
   addCoin(coin) {
     this.coins += 5; // Erhöht die Anzahl der Coins um 5
-    console.log("Anzahl der Coins hier:", this.coins); // Gibt die neue Anzahl der Flaschen aus
+    // console.log("Anzahl der Coins hier:", this.coins); // Gibt die neue Anzahl der Flaschen aus
 
   }
 }

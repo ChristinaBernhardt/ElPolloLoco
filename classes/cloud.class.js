@@ -17,7 +17,7 @@ class Cloud extends MovableObject {
     super().loadImage("assets/5_background/layers/4_clouds/1.png");
     this.loadImages(this.IMAGES_CLOUDS);
     var imageIndex = Math.round(Math.random() * 2);
-    console.log(imageIndex);
+    // console.log(imageIndex);
     this.loadImage(this.IMAGES_CLOUDS[imageIndex]);
         this.x = cloudPosition;
     this.animate();
