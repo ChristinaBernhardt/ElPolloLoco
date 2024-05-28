@@ -41,25 +41,12 @@ class Chicken extends MovableObject {
 //   }, 150);
 // }
 
-// /**
-// * handle death chickens
-// */
-// checkDead() {
-//   setInterval(() => {
-//       if (this.dead) {
-//           this.loadImage(this.IMAGES_DEAD);
-//           clearInterval(this.walkingChickenAnimation)
-//           clearInterval(this.walkingChicken)
-//           setTimeout(() => {
-//               this.y += this.speedY;
-//           }, 500);
-//       };
-//   }, 50);
-// }
+
 
 
   animate() {
     setInterval(() => {
+      this.checkDead();
       this.moveLeft();
       // Überprüfe, ob x den gewünschten Wert erreicht hat
       if (this.x <= 0) {
@@ -86,4 +73,20 @@ class Chicken extends MovableObject {
       }  
     }, 50);
   }
+
+  /**
+* handle death chickens
+*/
+checkDead() {
+  setInterval(() => {
+      if (this.dead) {
+          this.loadImage(this.IMAGES_DEAD);
+          clearInterval(this.walkingChickenAnimation)
+          clearInterval(this.walkingChicken)
+          setTimeout(() => {
+              this.y += this.speedY;
+          }, 500);
+      };
+  }, 50);
+}
 }
