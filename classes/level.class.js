@@ -37,7 +37,7 @@ class Level {
         console.log(`myArray values: ${index}`);
         console.log(`variable x value: ${x}`);
       }
-    }, 4000); // 1000 Millisekunden = 1 Sekunde
+    }, 1000); // 1000 Millisekunden = 1 Sekunde
   }
 
 

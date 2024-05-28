@@ -43,10 +43,10 @@ class Yellowchicken extends MovableObject {
          
           setTimeout(() => {
             this.loadImage(this.IMAGES_DEAD);
-          }, 2000); 
+          }, 1000); 
           setTimeout(() => {
             this.dead = true;
-          }, 4000); // Spiele die Todesanimation nach 2 Sekunden ab
+          }, 2000); // Spiele die Todesanimation nach 2 Sekunden ab
         }
       }  
     }, 50);
