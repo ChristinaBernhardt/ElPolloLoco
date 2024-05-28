@@ -50,7 +50,7 @@ this.throwableObject.push(bottle);
       if (this.character.isColliding(enemy)) {
         if (this.character.isAboveGround()) {
           console.log(enemy);
-          this.enemy.isDead();
+          // this.enemy.isDead();
           this.level.deleteEnemy(enemy);
         } else {
           this.character.hit();

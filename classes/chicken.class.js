@@ -23,67 +23,67 @@ class Chicken extends MovableObject {
 /**
      * runs the functions to animate the chickens
      */
-animate() {
-  this.moveChicken();
-  this.checkDead();
-}
+// animate() {
+//   this.moveChicken();
+//   this.checkDead();
+// }
 
-/**
-* animate and move the chickens
-*/
-moveChicken() {
-  this.walkingChicken = setInterval(() => {
+// /**
+// * animate and move the chickens
+// */
+// moveChicken() {
+//   this.walkingChicken = setInterval(() => {
+//       this.moveLeft();
+//   }, 1000 / 60); 
+  
+//   this.walkingChickenAnimation = setInterval(() => {
+//       this.playAnimation(this.IMAGES_WALKING);
+//   }, 150);
+// }
+
+// /**
+// * handle death chickens
+// */
+// checkDead() {
+//   setInterval(() => {
+//       if (this.dead) {
+//           this.loadImage(this.IMAGES_DEAD);
+//           clearInterval(this.walkingChickenAnimation)
+//           clearInterval(this.walkingChicken)
+//           setTimeout(() => {
+//               this.y += this.speedY;
+//           }, 500);
+//       };
+//   }, 50);
+// }
+
+
+  animate() {
+    setInterval(() => {
       this.moveLeft();
-  }, 1000 / 60); 
+      // Überprüfe, ob x den gewünschten Wert erreicht hat
+      if (this.x <= 0) {
+        clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+      }
+    }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
   
-  this.walkingChickenAnimation = setInterval(() => {
+    setInterval(() => {
       this.playAnimation(this.IMAGES_WALKING);
-  }, 150);
-}
-
-/**
-* handle death chickens
-*/
-checkDead() {
-  setInterval(() => {
-      if (this.dead) {
-          this.loadImage(this.IMAGES_DEAD);
-          clearInterval(this.walkingChickenAnimation)
-          clearInterval(this.walkingChicken)
-          setTimeout(() => {
-              this.y += this.speedY;
-          }, 500);
-      };
-  }, 50);
-}
-
-
-  // animate() {
-  //   setInterval(() => {
-  //     this.moveLeft();
-  //     // Überprüfe, ob x den gewünschten Wert erreicht hat
-  //     if (this.x <= 0) {
-  //       clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
-  //     }
-  //   }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
+    }, 100);
   
-  //   setInterval(() => {
-  //     this.playAnimation(this.IMAGES_WALKING);
-  //   }, 100);
-  
-  //   setInterval(() => {
-  //     if (this.energy === 0) {
-  //       if (!this.dead) {
-  //         this.currentImage = 0;
+    setInterval(() => {
+      if (this.energy === 0) {
+        if (!this.dead) {
+          this.currentImage = 0;
          
-  //         setTimeout(() => {
-  //           this.loadImage(this.IMAGES_DEAD);
-  //         }, 2000); 
-  //         setTimeout(() => {
-  //           this.dead = true;
-  //         }, 4000); // Spiele die Todesanimation nach 2 Sekunden ab
-  //       }
-  //     }  
-  //   }, 50);
-  // }
+          setTimeout(() => {
+            this.loadImage(this.IMAGES_DEAD);
+          }, 2000); 
+          setTimeout(() => {
+            this.dead = true;
+          }, 4000); // Spiele die Todesanimation nach 2 Sekunden ab
+        }
+      }  
+    }, 50);
+  }
 }
