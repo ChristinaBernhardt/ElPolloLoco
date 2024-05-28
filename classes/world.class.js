@@ -48,7 +48,7 @@ class World {
       if (this.character.isColliding(enemy)) {
         if (this.character.isAboveGround()) {
           console.log(enemy);
-          this.level.isDead(enemy);
+          enemy.dead = true;
           this.level.deleteEnemy(enemy);
         } else {
           this.character.hit();
