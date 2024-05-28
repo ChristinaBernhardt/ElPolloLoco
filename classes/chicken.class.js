@@ -90,3 +90,6 @@ checkDead() {
   }, 50);
 }
 }
+
+
+// methode die - image schreiben - speed 0

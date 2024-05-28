@@ -46,7 +46,7 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
-  alert_sound = new Audio("audio/alert.mp3");
+  alert_   = new Audio("audio/alert.mp3");
   attack_sound = new Audio("audio/attack.mp3");
 
   constructor() {
@@ -77,13 +77,13 @@ class Endboss extends MovableObject {
       i++;
       if (world.character.x > 3470 && !this.hadFirstContact) {
   
-      this.alert_sound.play();
+      // this.alert_sound.play();
         i = 0;
         this.hadFirstContact = true;
       }
 
       if (world.character.x > 3470 && this.hadFirstContact) {
-        this.attack_sound.play();
+        // this.attack_sound.play();
         this.moveLeft();
       }
 
