@@ -59,11 +59,10 @@ checkDead() {
   setInterval(() => {
       if (this.dead) {
           this.loadImage(this.IMAGES_DEAD);
-          clearInterval(this.playAnimation)
-          clearInterval(this.walkingChicken)
-          setTimeout(() => {
-              this.speed = 0;
-          }, 500);
+          // clearInterval();
+          // clearInterval(this.walkingChicken);
+          // setTimeout(() => {this.speed = 0;
+          // }, 500);
       };
   }, 50);
 }
