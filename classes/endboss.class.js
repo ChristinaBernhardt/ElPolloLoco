@@ -77,13 +77,13 @@ class Endboss extends MovableObject {
       i++;
       if (world.character.x > 3470 && !this.hadFirstContact) {
   
-      // this.alert_sound.play();
+      this.alert_sound.play();
         i = 0;
         this.hadFirstContact = true;
       }
 
       if (world.character.x > 3470 && this.hadFirstContact) {
-        // this.attack_sound.play();
+        this.attack_sound.play();
         this.moveLeft();
       }
 
