@@ -36,13 +36,11 @@ class World {
     }, 200);
   }
 
-  checkThrowableObjects(){
-if(this.keyboard.D){
-  let bottle = new ThrowableObject(this.character.x, this.character.y)
-this.throwableObject.push(bottle);
-
-}
-
+  checkThrowableObjects() {
+    if (this.keyboard.D) {
+      let bottle = new ThrowableObject(this.character.x, this.character.y);
+      this.throwableObject.push(bottle);
+    }
   }
 
   checkCollisions() {
@@ -50,7 +48,7 @@ this.throwableObject.push(bottle);
       if (this.character.isColliding(enemy)) {
         if (this.character.isAboveGround()) {
           console.log(enemy);
-          // this.enemy.isDead();
+          this.level.isDead(enemy);
           this.level.deleteEnemy(enemy);
         } else {
           this.character.hit();
