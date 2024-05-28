@@ -24,9 +24,48 @@ class Yellowchicken extends MovableObject {
 
   animate() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_WALKING);
-
+      this.checkDead();
       this.moveLeft();
+      // Überprüfe, ob x den gewünschten Wert erreicht hat
+      if (this.x <= 0) {
+        clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+      }
+    }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
+  
+    setInterval(() => {
+      this.playAnimation(this.IMAGES_WALKING);
     }, 100);
+  
+    setInterval(() => {
+      if (this.energy === 0) {
+        if (!this.dead) {
+          this.currentImage = 0;
+         
+          setTimeout(() => {
+            this.loadImage(this.IMAGES_DEAD);
+          }, 2000); 
+          setTimeout(() => {
+            this.dead = true;
+          }, 4000); // Spiele die Todesanimation nach 2 Sekunden ab
+        }
+      }  
+    }, 50);
   }
+
+  /**
+* handle death chickens
+*/
+checkDead() {
+  setInterval(() => {
+      if (this.dead) {
+          this.loadImage(this.IMAGES_DEAD);
+          clearInterval(this.walkingChickenAnimation)
+          clearInterval(this.walkingChicken)
+          setTimeout(() => {
+              this.y += this.speedY;
+          }, 500);
+      };
+  }, 50);
 }
+}
+
