@@ -131,6 +131,9 @@ class Character extends MovableObject {
       // console.log(this.x);
       if (!this.dead) {
         this.walking_sound.pause();
+        if (this.world.keyboard.D) {
+          this.throw;
+        }
         if (
           this.world.keyboard.RIGHT &&
           this.x < this.world.level.level_end_x

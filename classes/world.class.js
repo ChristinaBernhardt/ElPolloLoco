@@ -12,6 +12,7 @@ class World {
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
+  throwableObject = [new ThrowableObject()];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -19,7 +20,7 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    this.checkCollisions();
+    this.run();
     this.checkContactSalsa();
     this.checkContactCoin();
   }
@@ -28,24 +29,39 @@ class World {
     this.character.world = this;
   }
 
-  checkCollisions() {
+  run() {
     setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          if (this.character.isAboveGround()) {
-            console.log(enemy);
-            this.level.deleteEnemy(enemy);
-          } else {
-            this.character.hit();
-            this.statusBar.setPercentage(this.character.energy);
-            console.log(
-              "collision with Character, energy ",
-              this.character.energy
-            );
-          }
-        }
-      });
+      this.checkCollisions();
+      this.checkThrowableObjects();
     }, 200);
+  }
+
+  checkThrowableObjects(){
+if(this.keyboard.D){
+  let bottle = new ThrowableObject(this.character.x, this.character.y)
+this.throwableObject.push(bottle);
+
+}
+
+  }
+
+  checkCollisions() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        if (this.character.isAboveGround()) {
+          console.log(enemy);
+          this.enemy.isDead();
+          this.level.deleteEnemy(enemy);
+        } else {
+          this.character.hit();
+          this.statusBar.setPercentage(this.character.energy);
+          console.log(
+            "collision with Character, energy ",
+            this.character.energy
+          );
+        }
+      }
+    });
   }
 
   checkContactSalsa() {
@@ -87,6 +103,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsas);
+    this.addObjectsToMap(this.throwableObject);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
