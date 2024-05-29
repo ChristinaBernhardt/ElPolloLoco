@@ -122,7 +122,7 @@ class Endboss extends MovableObject {
 // * handle death chickens
 // */
 // checkDead() {
-// setInterval(() => {
+
 //     if (this.dead) {
 //         this.loadImage(this.IMAGES_DEAD);
 //         // clearInterval(this.playAnimation)
@@ -131,7 +131,7 @@ class Endboss extends MovableObject {
 //         //     this.y += this.speedY;
 //         // }, 500);
 //     };
-// }, 50);
+
 // }
 // }
 

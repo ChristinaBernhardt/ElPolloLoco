@@ -78,7 +78,7 @@ class Chicken extends MovableObject {
 * handle death chickens
 */
 checkDead() {
-  setInterval(() => {
+
       if (this.dead) {
           this.loadImage(this.IMAGES_DEAD);
           // clearInterval(this.playAnimation)
@@ -87,7 +87,7 @@ checkDead() {
           //     this.y += this.speedY;
           // }, 500);
       };
-  }, 50);
+
 }
 }
 

@@ -56,15 +56,14 @@ class Yellowchicken extends MovableObject {
 * handle death chickens
 */
 checkDead() {
-  setInterval(() => {
-      if (this.dead) {
+       if (this.dead) {
           this.loadImage(this.IMAGES_DEAD);
           // clearInterval();
           // clearInterval(this.walkingChicken);
           // setTimeout(() => {this.speed = 0;
           // }, 500);
       };
-  }, 50);
+ 
 }
 }
 
