@@ -12,7 +12,7 @@ IMAGES_SALSABOTTLEONGROUND = [
       this.loadImages(this.IMAGES_SALSABOTTLEONGROUND);
 
       var imageIndex = Math.round(Math.random() * 1);
-      console.log(imageIndex);
+      // console.log(imageIndex);
       this.loadImage(this.IMAGES_SALSABOTTLEONGROUND[imageIndex]);
       this.x = 200 + Math.random() * 3000;
       this.y = 380;

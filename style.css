@@ -7,12 +7,16 @@ body {
     margin: 0;
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
+    background-size: cover; /* Fügt hinzu, dass das Bild die gesamte Seite abdeckt */
+    background-attachment: fixed; /* Verhindert, dass das Bild beim Scrollen verschiebt */
     font-family: 'comic', Arial, Helvetica, sans-serif;
     padding-left: 20px;
     padding-right: 20px;
+    background-repeat: no-repeat;
 }
 
 h1 {
+    text-align: center;
     font-size: 48px;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 3px;
@@ -98,6 +102,8 @@ color: black;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    background-image: url('assets/5_background/abstract-4582133_1280.jpg');
+    background-position: center;
 }
 
 @font-face {

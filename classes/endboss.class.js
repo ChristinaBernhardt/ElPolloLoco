@@ -46,7 +46,7 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
-  alert_sound = new Audio("audio/alert.mp3");
+  alert_   = new Audio("audio/alert.mp3");
   attack_sound = new Audio("audio/attack.mp3");
 
   constructor() {
@@ -60,18 +60,14 @@ class Endboss extends MovableObject {
     //   this.speed = 0.15 + Math.random() * 0.5;
     this.animate();
   }
-
   
   animate() {
-    console.log(this.x);
     let i = 0;
     setInterval(() => {
       if (i < 10) {
         this.playAnimation(this.IMAGES_ALERT);
-       
       } else {
         this.playAnimation(this.IMAGES_ATTACK);
-   
       }
 
       i++;
@@ -90,3 +86,54 @@ class Endboss extends MovableObject {
     }, 150);
   }
 }
+
+
+// animate() {
+//   setInterval(() => {
+//     this.checkDead();
+//     this.moveLeft();
+//     // Überprüfe, ob x den gewünschten Wert erreicht hat
+//     if (this.x <= 0) {
+//       clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+//     }
+//   }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
+
+//   setInterval(() => {
+//     this.playAnimation(this.IMAGES_WALKING);
+//   }, 100);
+
+//   setInterval(() => {
+//     if (this.energy === 0) {
+//       if (!this.dead) {
+//         this.currentImage = 0;
+       
+//         setTimeout(() => {
+//           this.loadImage(this.IMAGES_DEAD);
+//         }, 1000); 
+//         setTimeout(() => {
+//           this.dead = true;
+//         }, 1000); // Spiele die Todesanimation nach 2 Sekunden ab
+//       }
+//     }  
+//   }, 50);
+// }
+
+// /**
+// * handle death chickens
+// */
+// checkDead() {
+// setInterval(() => {
+//     if (this.dead) {
+//         this.loadImage(this.IMAGES_DEAD);
+//         // clearInterval(this.playAnimation)
+//         // clearInterval(this.walkingChicken)
+//         // setTimeout(() => {
+//         //     this.y += this.speedY;
+//         // }, 500);
+//     };
+// }, 50);
+// }
+// }
+
+
+// methode die - image schreiben - speed 0
