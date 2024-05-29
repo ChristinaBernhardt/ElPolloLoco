@@ -12,7 +12,7 @@ class World {
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
-  throwableObject = [new ThrowableObject()];
+  throwableObjects = [];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -39,7 +39,7 @@ class World {
   checkThrowableObjects() {
     if (this.keyboard.D) {
       let bottle = new ThrowableObject(this.character.x, this.character.y);
-      this.throwableObject.push(bottle);
+      this.throwableObjects.push(bottle);
     }
   }
 
@@ -60,6 +60,27 @@ class World {
       }
     });
   }
+
+
+  checkCollisionsBottleEndboss() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+          if (this.character.isAboveGround() && (enemy instanceof Endboss)) {
+          enemy.die();
+          this.level.deleteEnemy(enemy);
+        } else {
+          this.character.hit();
+          this.statusBar.setPercentage(this.character.energy);
+          // console.log(
+          //   "collision with Character, energy ",
+          //   this.character.energy
+          // );
+        }
+      }
+    });
+  }
+
+
 
   checkContactSalsa() {
     setInterval(() => {
@@ -100,7 +121,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsas);
-    this.addObjectsToMap(this.throwableObject);
+    this.addObjectsToMap(this.throwableObjects);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
