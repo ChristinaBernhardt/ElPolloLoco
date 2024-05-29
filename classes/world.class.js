@@ -46,9 +46,8 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        if (this.character.isAboveGround()) {
-          console.log(enemy);
-          enemy.dead = true;
+          if (this.character.isAboveGround() && (enemy instanceof Chicken || enemy instanceof Yellowchicken)) {
+          enemy.die();
           this.level.deleteEnemy(enemy);
         } else {
           this.character.hit();

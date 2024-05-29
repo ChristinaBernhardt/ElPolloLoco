@@ -2,6 +2,8 @@ class Chicken extends MovableObject {
   y = 360;
   height = 70;
   width = 50;
+  intervalIdAnimate;
+  intervalIdPlayAnimation;
 
   IMAGES_WALKING = [
     "assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
@@ -20,76 +22,35 @@ class Chicken extends MovableObject {
     this.animate();
   }
 
-/**
-     * runs the functions to animate the chickens
-     */
-// animate() {
-//   this.moveChicken();
-//   this.checkDead();
-// }
-
-// /**
-// * animate and move the chickens
-// */
-// moveChicken() {
-//   this.walkingChicken = setInterval(() => {
-//       this.moveLeft();
-//   }, 1000 / 60); 
-  
-//   this.walkingChickenAnimation = setInterval(() => {
-//       this.playAnimation(this.IMAGES_WALKING);
-//   }, 150);
-// }
-
-
-
-
   animate() {
-    setInterval(() => {
-      this.checkDead();
+    this.intervalIdAnimate = setInterval(() => {
       this.moveLeft();
       // Überprüfe, ob x den gewünschten Wert erreicht hat
       if (this.x <= 0) {
         clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
       }
     }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
-  
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALKING);
+
+    this.intervalIdPlayAnimation = setInterval(() => {
+           if (this.dead != true){
+            this.playAnimation(this.IMAGES_WALKING);
+          }
     }, 100);
-  
-    setInterval(() => {
-      if (this.energy === 0) {
-        if (!this.dead) {
-          this.currentImage = 0;
-         
-          setTimeout(() => {
-            this.loadImage(this.IMAGES_DEAD);
-          }, 1000); 
-          setTimeout(() => {
-            this.dead = true;
-          }, 1000); // Spiele die Todesanimation nach 2 Sekunden ab
-        }
-      }  
-    }, 50);
   }
 
   /**
-* handle death chickens
-*/
-checkDead() {
-
-      if (this.dead) {
-          this.loadImage(this.IMAGES_DEAD);
-          // clearInterval(this.playAnimation)
-          // clearInterval(this.walkingChicken)
-          // setTimeout(() => {
-          //     this.y += this.speedY;
-          // }, 500);
-      };
-
-}
-}
+   * handle death chickens
+   */
+  die() {
+      this.dead = true
+      this.loadImage(this.IMAGES_DEAD);
+      clearInterval(this.intervalIdAnimate);
+      setTimeout(() => {
+      clearInterval(this.intervalIdPlayAnimation);
+      console.log(this.intervalIdAnimate, this.intervalIdPlayAnimation);
+      }, 500);
+    }
+  }
 
 
-// methode die - image schreiben - speed 0
+

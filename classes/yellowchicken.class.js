@@ -2,6 +2,8 @@ class Yellowchicken extends MovableObject {
   y = 380;
   height = 50;
   width = 40;
+  intervalIdAnimate;
+  intervalIdPlayAnimation;
 
   IMAGES_WALKING = [
     "assets/3_enemies_chicken/chicken_small/1_walk/1_w.png",
@@ -23,47 +25,32 @@ class Yellowchicken extends MovableObject {
   }
 
   animate() {
-    setInterval(() => {
-      this.checkDead();
+    this.intervalIdAnimate = setInterval(() => {
       this.moveLeft();
       // Überprüfe, ob x den gewünschten Wert erreicht hat
       if (this.x <= 0) {
         clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
       }
     }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
-  
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALKING);
+
+    this.intervalIdPlayAnimation = setInterval(() => {
+           if (this.dead != true){
+            this.playAnimation(this.IMAGES_WALKING);
+          }
     }, 100);
-  
-    setInterval(() => {
-      if (this.energy === 0) {
-        if (!this.dead) {
-          this.currentImage = 0;
-         
-          setTimeout(() => {
-            this.loadImage(this.IMAGES_DEAD);
-          }, 1000); 
-          setTimeout(() => {
-            this.dead = true;
-          }, 2000); // Spiele die Todesanimation nach 2 Sekunden ab
-        }
-      }  
-    }, 50);
   }
 
   /**
-* handle death chickens
-*/
-checkDead() {
-       if (this.dead) {
-          this.loadImage(this.IMAGES_DEAD);
-          // clearInterval();
-          // clearInterval(this.walkingChicken);
-          // setTimeout(() => {this.speed = 0;
-          // }, 500);
-      };
- 
-}
-}
+   * handle death chickens
+   */
+  die() {
+      this.dead = true
+      this.loadImage(this.IMAGES_DEAD);
+      clearInterval(this.intervalIdAnimate);
+      setTimeout(() => {
+      clearInterval(this.intervalIdPlayAnimation);
+      console.log(this.intervalIdAnimate, this.intervalIdPlayAnimation);
+      }, 500);
+    }
+  }
 
