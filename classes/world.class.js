@@ -33,6 +33,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
+      this.checkCollisionsEndbossBottle()
     }, 200);
   }
 
@@ -46,7 +47,10 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-          if (this.character.isAboveGround() && (enemy instanceof Chicken || enemy instanceof Yellowchicken)) {
+        if (
+          this.character.isAboveGround() &&
+          (enemy instanceof Chicken || enemy instanceof Yellowchicken)
+        ) {
           enemy.die();
           this.level.deleteEnemy(enemy);
         } else {
@@ -61,26 +65,17 @@ class World {
     });
   }
 
-
-  checkCollisionsBottleEndboss() {
-    this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
-          if (this.character.isAboveGround() && (enemy instanceof Endboss)) {
-          enemy.die();
-          this.level.deleteEnemy(enemy);
-        } else {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-          // console.log(
-          //   "collision with Character, energy ",
-          //   this.character.energy
-          // );
-        }
+  checkCollisionsEndbossBottle() {
+     this.level.enemies.forEach((enemy) => {
+      if (enemy instanceof Endboss) {
+        this.throwableObjects.forEach((bottle) => {
+          if (enemy.isColliding(bottle)) {
+            console.log("treffer");
+          }
+        });
       }
     });
   }
-
-
 
   checkContactSalsa() {
     setInterval(() => {
