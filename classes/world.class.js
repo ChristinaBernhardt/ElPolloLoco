@@ -1,5 +1,3 @@
-// Miza - hier schon mute einbinden?
-
 class World {
   character = new Character();
   level = level1;
@@ -71,6 +69,9 @@ class World {
         this.throwableObjects.forEach((bottle) => {
           if (enemy.isColliding(bottle)) {
             console.log("treffer");
+            this.level.enemies.hitEndboss();
+            this.statusBarEndboss.setPercentage(this.level.enemies.energy);
+            console.log("collision with Endboss, energy ", this.level.enemies.energy);
           }
         });
       }
