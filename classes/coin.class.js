@@ -12,12 +12,11 @@ IMAGES_COINS = [
     this.loadImages(this.IMAGES_COINS);
     this.x = 200 + Math.random() * 3000;
     this.y = 100 + Math.random() * 200;
-    // this.animate();  }
+    this.animate();  }
 
-// animate(){
-//   setInterval(() => {
-//     this.playAnimation(this.COINS);
-//   },1000);
-// }
+animate(){
+  setInterval(() => {
+    this.playAnimation(this.IMAGES_COINS);
+  },150);
 }
 }
