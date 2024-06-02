@@ -69,9 +69,10 @@ class World {
         this.throwableObjects.forEach((bottle) => {
           if (enemy.isColliding(bottle)) {
             console.log("treffer");
+           enemy.hitEndboss();
             // this.level.enemies.hitEndboss();
-            this.statusBarEndboss.setPercentage(this.level.enemies.energy);
-            console.log("collision with Endboss, energy ", this.level.enemies.energy);
+           this.statusBarEndboss.setPercentage(this.endboss);
+            console.log("collision with Endboss, energy ", endboss.energy);
           }
         });
       }

@@ -46,8 +46,18 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
-  alert_   = new Audio("audio/alert.mp3");
-  attack_sound = new Audio("audio/attack.mp3");
+  alert_sound = new Audio({
+    loop: true,
+    volume: 0.5,
+    src: ["audio/alert.mp3"],
+  });
+
+  attack_sound = new Audio({
+    loop: true,
+    volume: 0.5,
+    src: ["audio/attack.mp3"],
+  });
+  won_sound = new Audio("audio/won.mp3");
 
   constructor() {
     super().loadImage("assets/4_enemie_boss_chicken/2_alert/G5.png");
@@ -60,31 +70,53 @@ class Endboss extends MovableObject {
     //   this.speed = 0.15 + Math.random() * 0.5;
     this.animate();
   }
-  
+
   animate() {
     let i = 0;
     setInterval(() => {
-      if (i < 10) {
-        this.playAnimation(this.IMAGES_ALERT);
-      } else {
-        this.playAnimation(this.IMAGES_ATTACK);
-      }
+      if (!this.dead) {
+        if (i < 10) {
+          this.playAnimation(this.IMAGES_ALERT);
+        } else {
+          this.playAnimation(this.IMAGES_ATTACK);
+        }
 
-      i++;
-      if (world.character.x > 3470 && !this.hadFirstContact) {
-  
-      // this.alert_sound.play();
-        i = 0;
-        this.hadFirstContact = true;
-      }
+        i++;
+        if (world.character.x > 3470 && !this.hadFirstContact) {
+          // this.alert_sound.play();
+          i = 0;
+          this.hadFirstContact = true;
+        }
 
-      if (world.character.x > 3470 && this.hadFirstContact) {
-        // this.attack_sound.play();
-        this.moveLeft();
+        if (world.character.x > 3470 && this.hadFirstContact) {
+          // this.attack_sound.play();
+          this.moveLeft();
+        }
       }
-
     }, 150);
-  }
-}
 
+    setInterval(() => {
+      if (this.energy === 0) {
+        if (!this.dead) {
+          this.currentImage = 0;
+          this.dead = true;
+          setTimeout(() => {
+            wonGame();
+            console.log("Game won");
+            let gameOverDiv = document.getElementById("game-over");
+            gameOverDiv.style.display = "block";
+            // Nach 1 Sekunde zur index.html weiterleiten
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 2000);
+          }, 2000);
+        }
+        this.playAnimationOnce(this.IMAGES_DEAD);
+      } else if (this.isHurt()) {
+        // this.scream_sound.play();
+        this.playAnimation(this.IMAGES_HURT);
+      }  
+    }, 50);
+  }
+  }
 
