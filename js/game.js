@@ -65,6 +65,10 @@ function stopGame(){
 clearAllIntervals();
 }
 
+function wonGame(){
+  clearAllIntervals();
+  }
+
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 };

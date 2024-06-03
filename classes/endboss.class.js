@@ -111,12 +111,12 @@ class Endboss extends MovableObject {
             }, 2000);
           }, 2000);
         }
-        this.playAnimationOnce(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
         // this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
       }  
-    }, 50);
+    }, 150);
   }
   }
 
