@@ -12,9 +12,6 @@ class Character extends MovableObject {
     right: 0,
   };
 
-
-
-
   IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
     "assets/2_character_pepe/1_idle/idle/I-2.png",
@@ -174,13 +171,19 @@ class Character extends MovableObject {
         // this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
+        this.updateMoveTime();
         this.playAnimationOnce(this.IMAGES_JUMPING);
       } else {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+          this.updateMoveTime();
           this.playAnimation(this.IMAGES_WALKING);
+        } else if (this.sleepTime()) {
+          this.playAnimation(this.IMAGES_LONG_IDLE);
+        } else {
+          this.playAnimation(this.IMAGES_IDLE);
         }
       }
-    }, 50);
+    }, 150);
   }
 
   jump() {
@@ -192,13 +195,22 @@ class Character extends MovableObject {
   addBottle(salsa) {
     this.bottles += 10; // Erhöht die Anzahl der Flaschen um 10
     // console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
-
   }
-
 
   addCoin(coin) {
     this.coins += 5; // Erhöht die Anzahl der Coins um 5
     // console.log("Anzahl der Coins hier:", this.coins); // Gibt die neue Anzahl der Flaschen aus
+  }
 
+
+  updateMoveTime() {
+    let currentTime = new Date().getTime();
+    this.lastMoveTime = currentTime;
+  }
+
+
+  sleepTime() {
+    let passedTime = new Date().getTime() - this.lastMoveTime;
+    return passedTime > 4000;
   }
 }
