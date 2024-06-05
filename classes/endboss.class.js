@@ -103,7 +103,7 @@ class Endboss extends MovableObject {
           setTimeout(() => {
             wonGame();
             console.log("Game won");
-            let gameOverDiv = document.getElementById("game-over");
+            let gameOverDiv = document.getElementById("game-won");
             gameOverDiv.style.display = "block";
             // Nach 1 Sekunde zur index.html weiterleiten
             setTimeout(() => {
