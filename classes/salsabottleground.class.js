@@ -1,6 +1,7 @@
 class Salsabottleground extends MovableObject {
     height = 50;
     width = 50;
+    isExploded = false;
   
 IMAGES_SALSABOTTLEONGROUND = [
       "assets/6_salsa_bottle/1_salsa_bottle_on_ground.png",

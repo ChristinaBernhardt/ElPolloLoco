@@ -1,6 +1,7 @@
 class Salsabottle extends MovableObject {
     height = 50;
     width = 50;
+    isExploded = false;
   
   IMAGES_SALSABOTTLE = [
       "assets/6_salsa_bottle/salsa_bottle.png",

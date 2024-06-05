@@ -31,7 +31,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
-      this.checkCollisionsEndbossBottle()
+      this.checkCollisionsEndbossBottle();
     }, 200);
   }
 
@@ -64,15 +64,18 @@ class World {
   }
 
   checkCollisionsEndbossBottle() {
-     this.level.enemies.forEach((enemy) => {
+    this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
         this.throwableObjects.forEach((bottle) => {
-          if (enemy.isColliding(bottle)) {
+          if (enemy.isColliding(bottle) && !bottle.isExploded) {
+            bottle.isExploded = true;
+            bottle.animateSplash(bottle);
+            enemy.hitEndboss();
 
-           enemy.hitEndboss();
-
-           this.statusBarEndboss.setPercentage(this.endboss);
-
+            this.statusBarEndboss.setPercentage(this.endboss.energy);
+            setTimeout(() => {
+              this.throwableObjects.splice(bottle, 1);
+            }, 80);
           }
         });
       }
