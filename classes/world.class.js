@@ -72,7 +72,7 @@ class World {
             bottle.animateSplash(bottle);
             enemy.hitEndboss();
 
-            this.statusBarEndboss.setPercentage(this.endboss.energy);
+            this.statusBarEndboss.setPercentage(enemy.energy);
             setTimeout(() => {
               this.throwableObjects.splice(bottle, 1);
             }, 80);
