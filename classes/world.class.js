@@ -32,7 +32,7 @@ class World {
       this.checkCollisions();
       this.checkThrowableObjects();
       this.checkCollisionsEndbossBottle();
-    }, 200);
+    }, 100);
   }
 
   checkThrowableObjects() {
@@ -147,7 +147,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    // mo.drawFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

@@ -90,13 +90,13 @@ class Endboss extends MovableObject {
 
         i++;
         if (world.character.x > 3470 && !this.hadFirstContact) {
-          // this.alert_sound.play();
+          this.alert_sound.play();
           i = 0;
           this.hadFirstContact = true;
         }
 
         if (world.character.x > 3470 && this.hadFirstContact) {
-          // this.attack_sound.play();
+          this.attack_sound.play();
           this.moveLeft();
         }
       }
@@ -112,7 +112,6 @@ class Endboss extends MovableObject {
             console.log("Game won");
             let gameOverDiv = document.getElementById("game-won");
             gameOverDiv.style.display = "block";
-            // Nach 1 Sekunde zur index.html weiterleiten
             setTimeout(() => {
               window.location.href = "index.html";
             }, 2000);
@@ -122,8 +121,7 @@ class Endboss extends MovableObject {
       } else if (this.isHurt()) {
         // this.scream_sound.play();
         this.playAnimation(this.IMAGES_HURT);
-      }  
+      }
     }, 150);
   }
-  }
-
+}
