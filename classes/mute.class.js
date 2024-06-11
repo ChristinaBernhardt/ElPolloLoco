@@ -6,11 +6,11 @@ class Mute extends DrawableObject {
  
     constructor() {
       super();
-      this.loadImages(this.IMAGES);
-      this.x = 50;
-      this.y = 300;
-      this.width = 200;
-      this.height = 40;
+      this.loadImage(this.IMAGES);
+      this.x = 350;
+      this.y = 30;
+      this.width = 30;
+      this.height = 30;
 
     }
   
