@@ -76,6 +76,7 @@ function clearAllIntervals() {
 function enterFullscreen(element) {
   if(element.requestFullscreen) {
     element.requestFullscreen();
+    document.getElementById('fullscreenButton').classList.add("display-none");
   } else if(element.msRequestFullscreen) {      
     element.msRequestFullscreen();
   } else if(element.webkitRequestFullscreen) {  
@@ -87,7 +88,20 @@ function enterFullscreen(element) {
 function exitFullscreen() {
   if(document.exitFullscreen) {
     document.exitFullscreen();
+    document.getElementById('fullscreenButton').classList.remove("display-none");
   } else if(document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
+    document.getElementById('fullscreenButton').classList.remove("display-none");
+  }}
+
+  function soundOn() {
+console.log('mute');
+document.getElementById('soundOn').classList.remove("display-none");
+document.getElementById('soundOff').classList.add("display-none");
   }
-}
+
+  function soundOff() {
+    console.log('unmute');
+    document.getElementById('soundOff').classList.remove("display-none");
+    document.getElementById('soundOn').classList.add("display-none");
+      }

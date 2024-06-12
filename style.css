@@ -7,8 +7,10 @@ body {
     margin: 0;
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
-    background-size: cover; /* Fügt hinzu, dass das Bild die gesamte Seite abdeckt */
-    background-attachment: fixed; /* Verhindert, dass das Bild beim Scrollen verschiebt */
+    background-size: cover;
+    /* Fügt hinzu, dass das Bild die gesamte Seite abdeckt */
+    background-attachment: fixed;
+    /* Verhindert, dass das Bild beim Scrollen verschiebt */
     font-family: 'comic', Arial, Helvetica, sans-serif;
     padding-left: 20px;
     padding-right: 20px;
@@ -29,7 +31,10 @@ a {
 }
 
 .canvas {
+    position: absolute;
+    left: 120px;
     background-color: black;
+    z-index: -1;
 }
 
 .overlay {
@@ -37,7 +42,7 @@ a {
 }
 
 .display-none {
-display: none;
+    display: none;
 
 }
 
@@ -48,54 +53,74 @@ display: none;
     position: relative;
     text-align: center;
     color: white;
-  }
-  
-  /* Bottom left text */
-  .bottom-left {
+}
+
+/* Bottom left text */
+.bottom-left {
     position: absolute;
     bottom: 80px;
     left: 16px;
-  }
-  
-  /* Top left text */
-  .top-left {
+}
+
+/* Top left text */
+.top-left {
     position: absolute;
     top: 8px;
     left: 16px;
-  }
-  
-  /* Top right text */
-  .top-right {
+}
+
+/* Top right text */
+.top-right {
     position: absolute;
     top: 8px;
     right: 16px;
-  }
-  
-  /* Bottom right text */
-  .bottom-right {
+}
+
+/* Bottom right text */
+.bottom-right {
     position: absolute;
     bottom: 80px;
     right: 16px;
-  }
-  
+}
 
 
-  /* Centered text */
-  .centered {
+
+/* Centered text */
+.centered {
     position: absolute;
     bottom: 80px;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
 
-  .hover:hover {
-cursor: pointer;
-font-size: 72;
-text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
-color: black;
-  }
+.iconBar {
+    position: relative;
+margin-left: 20vw;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    padding-top: 10px;
+z-index: 1;
+    img {
+        height: 24px;
+    }
 
-  #game-over {
+    img:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
+
+
+.hover:hover {
+    cursor: pointer;
+    font-size: 72;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
+    color: black;
+}
+
+#game-over {
     display: none;
     position: fixed;
     top: 50%;
