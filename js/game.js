@@ -95,13 +95,13 @@ function exitFullscreen() {
   }}
 
   function soundOn() {
-console.log('mute');
+console.log('unmute');
 document.getElementById('soundOn').classList.remove("display-none");
 document.getElementById('soundOff').classList.add("display-none");
   }
 
   function soundOff() {
-    console.log('unmute');
+    console.log('mute');
     document.getElementById('soundOff').classList.remove("display-none");
     document.getElementById('soundOn').classList.add("display-none");
       }
