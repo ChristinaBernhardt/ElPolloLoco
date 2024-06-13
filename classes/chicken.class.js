@@ -5,6 +5,13 @@ class Chicken extends MovableObject {
   intervalIdAnimate;
   intervalIdPlayAnimation;
 
+  offset = {
+    top: 20,
+    bottom: 20,
+    left: 20,
+    right: 20,
+  };
+
   IMAGES_WALKING = [
     "assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
     "assets/3_enemies_chicken/chicken_normal/1_walk/2_w.png",

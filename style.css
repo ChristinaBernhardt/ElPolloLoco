@@ -8,7 +8,7 @@ body {
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    font-family: 'comic', Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     padding-left: 20px;
     padding-right: 20px;
     background-repeat: no-repeat;
@@ -27,6 +27,10 @@ h1 {
     font-size: 48px;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 3px;
+    font-family: 'comic', Arial, Helvetica, sans-serif;
+}
+
+.comic{
     font-family: 'comic', Arial, Helvetica, sans-serif;
 }
 
@@ -110,6 +114,7 @@ a {
 }
 
 .iconBarMobile {
+    display: none;
     position: absolute;
     bottom: 0;
     justify-content: center;
@@ -198,18 +203,28 @@ a {
     }
 }
 
-@media (orientation: portrait) and (max-width: 600px) {
+@media (orientation: portrait) and (max-width: 480px) {
 
     /* orientation: portrait-> Regel die gilt wenn das GerÃ¤t in 
     Hochformat gehalten wird (Portrait)*/
     #deviceNotice {
         display: flex;
+        width: 100vw;
+    }
+    canvas {
+        display: none;
+    }
+    .maincontent {
+        display: none;
     }
 }
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
+    }
+    .iconBarMobile {
+        display: flex;
     }
 }
 
@@ -218,9 +233,7 @@ a {
         display: none;
     }
 
-    .iconBarMobile {
-        display: flex;
-    }
+  
 }
 
 

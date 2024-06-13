@@ -5,7 +5,7 @@ class Character extends MovableObject {
   bottles = 0;
   coins = 0;
   offset = {
-    top: 70,
+    top: 120,
     bottom: 0,
     left: 0,
     right: 0,
@@ -127,7 +127,7 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      if (!this.dead) {
+         if (!this.dead) {
         this.walking_sound.pause();
         if (this.world.keyboard.D) {
           this.throw;

@@ -6,10 +6,10 @@ class Endboss extends MovableObject {
   hadFirstContact = false;
 
   offset = {
-    top: 70,
+    top: 0,
     bottom: 0,
-    left: 70,
-    right: 70,
+    left: 150,
+    right: 90, 
   };
 
   IMAGES_WALKING = [
@@ -79,7 +79,7 @@ class Endboss extends MovableObject {
           this.playAnimation(this.IMAGES_ALERT);
         } else {
           this.playAnimation(this.IMAGES_ATTACK);
-        }
+          this.speed = 5;        }
         i++;
         if (world.character.x > 3470 && !this.hadFirstContact) {
           if (isSoundOn) {

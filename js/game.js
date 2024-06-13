@@ -6,6 +6,9 @@ let i = 1;
 
 let isSoundOn = true;
 let audioElements = [];
+play_sound = new Audio("audio/play.mp3");
+this.play_sound.loop = true;
+
 
 function init() {
   initLevel();
@@ -14,9 +17,11 @@ function init() {
   canvas = document.getElementById("canvas");
   document.getElementById("overlay").classList.add("display-none");
   document.getElementById("iconBar").classList.add("display-flex");
+  document.getElementById("iconBarMobile").classList.add("display-flex");
   canvas.style.display = "block";
   world = new World(canvas, keyboard);
 }
+
 
 function bindBtsPressEvents() {
   document.getElementById("leftButton").addEventListener("touchstart", (e) => {
@@ -60,6 +65,7 @@ function bindBtsPressEvents() {
   });
 }
 
+
 window.addEventListener("keydown", (e) => {
   if (e.keyCode == 39) {
     keyboard.RIGHT = true;
@@ -81,6 +87,7 @@ window.addEventListener("keydown", (e) => {
     keyboard.D = true;
   }
 });
+
 
 window.addEventListener("keyup", (e) => {
   if (e.keyCode == 39) {

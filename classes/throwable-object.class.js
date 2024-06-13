@@ -36,10 +36,12 @@ class ThrowableObject extends MovableObject {
     this.throwBottle = setInterval(() => {
       this.x += 10;
       this.playAnimation(this.IMAGES_THROW);
+      this.updateMoveTime();
+      this.sleeping_sound.pause();
     }, 25);
   }
 
-
+  
   animateSplash() {
     this.speedY = 0;
     clearInterval(this.throwBottle);

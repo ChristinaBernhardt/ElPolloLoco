@@ -11,6 +11,13 @@ class Yellowchicken extends MovableObject {
     "assets/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
+  offset = {
+    top: 10,
+    bottom: 10,
+    left: 10,
+    right: 10,
+  };
+
   IMAGES_DEAD = ["assets/3_enemies_chicken/chicken_small/2_dead/dead.png"];
 
   constructor() {

@@ -5,7 +5,6 @@ class World {
   ctx;
   keyboard;
   camera_x = 0;
-  mute = false;
   statusBar = new StatusBar();
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
@@ -28,15 +27,13 @@ class World {
     this.play_sound.loop = true;
   }
 
+  
   setWorld() {
     this.character.world = this;
   }
 
 
   run() {
-    // if (isSoundOn) {
-    //   this.play_sound.play();
-    // }
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
