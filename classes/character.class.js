@@ -110,6 +110,7 @@ class Character extends MovableObject {
   jumping_sound = new Audio("audio/jump.mp3");
   scream_sound = new Audio("audio/hurt.mp3");
   loose_sound = new Audio("audio/loose.mp3");
+  sleeping_sound = new Audio("audio/sleeping.mp3");
 
   constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
@@ -135,12 +136,14 @@ class Character extends MovableObject {
           this.world.keyboard.RIGHT &&
           this.x < this.world.level.level_end_x
         ) {
+          this.sleeping_sound.pause();
           this.moveRight();
           if (isSoundOn) {
             this.walking_sound.play();
           }
         }
         if (this.world.keyboard.LEFT && this.x > -615) {
+          this.sleeping_sound.pause();
           this.moveLeft();
           this.otherDirection = true;
           if (isSoundOn) {
@@ -148,6 +151,7 @@ class Character extends MovableObject {
           }
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+          this.sleeping_sound.pause();
           this.jump();
         }
         this.world.camera_x = -this.x + 100;
@@ -185,6 +189,9 @@ class Character extends MovableObject {
           this.playAnimation(this.IMAGES_WALKING);
         } else if (this.sleepTime()) {
           this.playAnimation(this.IMAGES_LONG_IDLE);
+          if (isSoundOn) {
+            this.sleeping_sound.play();
+          }
         } else {
           this.playAnimation(this.IMAGES_IDLE);
         }

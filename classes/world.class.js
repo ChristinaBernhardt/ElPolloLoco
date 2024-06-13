@@ -34,9 +34,9 @@ class World {
 
 
   run() {
-    if (isSoundOn) {
-      this.play_sound.play();
-    }
+    // if (isSoundOn) {
+    //   this.play_sound.play();
+    // }
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
