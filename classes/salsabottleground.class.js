@@ -1,14 +1,20 @@
 class Salsabottleground extends MovableObject {
-  height = 50;
-  width = 50;
-  isExploded = false;
 
-  IMAGES_SALSABOTTLEONGROUND = [
+height = 50;
+width = 50;
+isExploded = false;
+
+IMAGES_SALSABOTTLEONGROUND = [
     "assets/6_salsa_bottle/1_salsa_bottle_on_ground.png",
     "assets/6_salsa_bottle/2_salsa_bottle_on_ground.png",
   ];
 
-  constructor() {
+  /**
+ * Creates an instance of Salsabottleground.
+ *
+ * @constructor
+ */
+constructor() {
     super().loadImage("assets/6_salsa_bottle/1_salsa_bottle_on_ground.png");
     this.loadImages(this.IMAGES_SALSABOTTLEONGROUND);
     var imageIndex = Math.round(Math.random() * 1);

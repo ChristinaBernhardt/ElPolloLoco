@@ -3,13 +3,16 @@ let world;
 let keyboard = new Keyboard();
 let intervalIds = [];
 let i = 1;
-
 let isSoundOn = true;
 let audioElements = [];
 play_sound = new Audio("audio/play.mp3");
 this.play_sound.loop = true;
 
 
+/**
+ * init game
+ * 
+ */
 function init() {
   initLevel();
   bindBtsPressEvents();
@@ -23,6 +26,10 @@ function init() {
 }
 
 
+/**
+ * animate mobile buttons
+ * 
+ */
 function bindBtsPressEvents() {
   document.getElementById("leftButton").addEventListener("touchstart", (e) => {
     e.preventDefault();
@@ -112,21 +119,38 @@ window.addEventListener("keyup", (e) => {
 });
 
 
+/**
+ * opens function clear all intervals
+ * 
+ */
 function stopGame() {
   clearAllIntervals();
 }
 
 
+/**
+ * won game
+ * 
+ */
 function wonGame() {
   clearAllIntervals();
 }
 
 
+/**
+ * clear all intervals
+ * 
+ */
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 
+/**
+ * enter fullscreen
+ *
+ * @param {*} element
+ */
 function enterFullscreen(element) {
   if (element.requestFullscreen) {
     element.requestFullscreen();
@@ -139,6 +163,10 @@ function enterFullscreen(element) {
 }
 
 
+/**
+ * exit fullscreen
+ * 
+ */
 function exitFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -154,6 +182,10 @@ function exitFullscreen() {
 }
 
 
+/**
+ * sound on
+ * 
+ */
 function soundOn() {
   isSoundOn = true;
   audioElements.forEach((audio) => {
@@ -164,6 +196,10 @@ function soundOn() {
 }
 
 
+/**
+ * sound off
+ * 
+ */
 function soundOff() {
   isSoundOn = false;
   audioElements.forEach((audio) => {
@@ -174,6 +210,10 @@ function soundOff() {
 }
 
 
+/**
+ * init audio
+ * 
+ */
 function initAudio() {
   audioElements = document.querySelectorAll("audio");
 }

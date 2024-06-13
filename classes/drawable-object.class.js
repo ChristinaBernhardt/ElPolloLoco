@@ -1,25 +1,42 @@
+
 class DrawableObject {
-  x = 100;
-  y = 230;
-  height = 210;
-  width = 100;
-  img;
-  imageCache = {};
-  currentImage = 0;
+
+x = 100;
+y = 230;
+height = 210;
+width = 100;
+img;
+imageCache = {};
+currentImage = 0;
 
  
-  loadImage(path) {
+  /**
+ * load image
+ *
+ * @param {*} path
+ */
+loadImage(path) {
     this.img = new Image(); 
     this.img.src = path;
   }
 
 
-  draw(ctx) {
+  /**
+ * draw image
+ *
+ * @param {*} ctx
+ */
+draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
 
-  loadImages(arr) {
+  /**
+ * load images
+ *
+ * @param {*} arr
+ */
+loadImages(arr) {
     arr.forEach((path) => {
       let img = new Image();
       img.src = path;
@@ -28,7 +45,12 @@ class DrawableObject {
   }
 
 
-  resolveImageIndex() {
+  /**
+ * get image index for status bars
+ *
+ * @returns {(5 | 4 | 3 | 2 | 1 | 0)}
+ */
+resolveImageIndex() {
     if (this.percentage == 100) {
       return 5;
     } else if (this.percentage >= 80) {

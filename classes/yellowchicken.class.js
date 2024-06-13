@@ -1,26 +1,32 @@
 class Yellowchicken extends MovableObject {
-  y = 380;
-  height = 50;
-  width = 40;
-  intervalIdAnimate;
-  intervalIdPlayAnimation;
 
-  IMAGES_WALKING = [
+y = 380;
+height = 50;
+width = 40;
+intervalIdAnimate;
+intervalIdPlayAnimation;
+
+IMAGES_WALKING = [
     "assets/3_enemies_chicken/chicken_small/1_walk/1_w.png",
     "assets/3_enemies_chicken/chicken_small/1_walk/2_w.png",
     "assets/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
-  offset = {
+offset = {
     top: 10,
     bottom: 10,
     left: 10,
     right: 10,
   };
 
-  IMAGES_DEAD = ["assets/3_enemies_chicken/chicken_small/2_dead/dead.png"];
+IMAGES_DEAD = ["assets/3_enemies_chicken/chicken_small/2_dead/dead.png"];
 
-  constructor() {
+  /**
+ * Creates an instance of Yellowchicken.
+ *
+ * @constructor
+ */
+constructor() {
     super().loadImage("assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
@@ -30,14 +36,16 @@ class Yellowchicken extends MovableObject {
   }
 
   
-  animate() {
+  /**
+ * animate yellow chicken
+ */
+animate() {
     this.intervalIdAnimate = setInterval(() => {
       this.moveLeft();
       if (this.x <= 0) {
         clearInterval(this.interval); 
       }
     }, 1000 / 60); 
-
     this.intervalIdPlayAnimation = setInterval(() => {
       if (this.dead != true) {
         this.playAnimation(this.IMAGES_WALKING);
@@ -46,7 +54,11 @@ class Yellowchicken extends MovableObject {
   }
 
 
-  die() {
+  /**
+ * let yellowchicken die
+ * 
+ */
+die() {
     this.dead = true;
     this.loadImage(this.IMAGES_DEAD);
     clearInterval(this.intervalIdAnimate);

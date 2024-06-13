@@ -1,13 +1,25 @@
 class Level {
-  enemies;
-  clouds;
-  layers;
-  level_end_x = 4200;
-  endboss;
-  coins;
-  salsas;
 
-  constructor(enemies, coins, salsas, clouds, layers, endboss) {
+enemies;
+clouds;
+layers;
+level_end_x = 4200;
+endboss;
+coins;
+salsas;
+
+  /**
+ * Creates an instance of Level.
+ *
+ * @constructor
+ * @param {*} enemies
+ * @param {*} coins
+ * @param {*} salsas
+ * @param {*} clouds
+ * @param {*} layers
+ * @param {*} endboss
+ */
+constructor(enemies, coins, salsas, clouds, layers, endboss) {
     this.enemies = enemies;
     this.coins = coins;
     this.salsas = salsas;
@@ -17,13 +29,23 @@ class Level {
   }
 
   
-  deleteSalsa(salsa) {
+  /**
+ * delete bottles
+ *
+ * @param {*} salsa
+ */
+deleteSalsa(salsa) {
     let index = this.salsas.indexOf(salsa);
     let x = this.salsas.splice(index, 1);
   }
 
 
-  deleteEnemy(enemy) {
+  /**
+ * delete enemies
+ *
+ * @param {*} enemy
+ */
+deleteEnemy(enemy) {
     setTimeout(() => {
       let index = this.enemies.indexOf(enemy);
       if (index > -1) {
@@ -33,7 +55,12 @@ class Level {
   }
 
 
-  deleteCoin(coin) {
+  /**
+ * delete coins
+ *
+ * @param {*} coin
+ */
+deleteCoin(coin) {
     let index = this.coins.indexOf(coin);
     let x = this.coins.splice(index, 1);
   }

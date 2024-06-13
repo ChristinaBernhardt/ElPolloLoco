@@ -1,21 +1,29 @@
 class World {
-  character = new Character();
-  level = level1;
-  canvas;
-  ctx;
-  keyboard;
-  camera_x = 0;
-  statusBar = new StatusBar();
-  statusBarCoin = new StatusBarCoin();
-  statusBarBottle = new StatusBarBottle();
-  statusBarEndboss = new StatusBarEndboss();
-  throwableObjects = [];
-  play_sound = new Audio("audio/play.mp3");
-  chickendie_sound = new Audio("audio/chickendie.mp3");
-  collectBottle_sound = new Audio("audio/collectbottle.mp3");
-  collectCoin_sound = new Audio("audio/collectcoin.mp3");
 
-  constructor(canvas, keyboard) {
+character = new Character();
+level = level1;
+canvas;
+ctx;
+keyboard;
+camera_x = 0;
+statusBar = new StatusBar();
+statusBarCoin = new StatusBarCoin();
+statusBarBottle = new StatusBarBottle();
+statusBarEndboss = new StatusBarEndboss();
+throwableObjects = [];
+play_sound = new Audio("audio/play.mp3");
+chickendie_sound = new Audio("audio/chickendie.mp3");
+collectBottle_sound = new Audio("audio/collectbottle.mp3");
+collectCoin_sound = new Audio("audio/collectcoin.mp3");
+
+  /**
+ * Creates an instance of World.
+ *
+ * @constructor
+ * @param {*} canvas
+ * @param {*} keyboard
+ */
+constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
@@ -27,13 +35,21 @@ class World {
     this.play_sound.loop = true;
   }
 
-  
-  setWorld() {
+
+  /**
+ * place character into world
+ * 
+ */
+setWorld() {
     this.character.world = this;
   }
 
 
-  run() {
+  /**
+ * run the game
+ * 
+ */
+run() {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
@@ -42,7 +58,11 @@ class World {
   }
 
 
-  checkThrowableObjects() {
+  /**
+ * check throwable bottles
+ * 
+ */
+checkThrowableObjects() {
     if (this.keyboard.D && this.character.bottles > 0) {
       this.character.bottles -= 10;
       this.statusBarBottle.setPercentage(this.character.bottles);
@@ -52,7 +72,11 @@ class World {
   }
 
 
-  checkCollisions() {
+  /**
+ * check collisions between character an enemies
+ * 
+ */
+checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         if (
@@ -74,7 +98,11 @@ class World {
   }
 
 
-  checkCollisionsEndbossBottle() {
+  /**
+ * check collisions between character an endboss
+ * 
+ */
+checkCollisionsEndbossBottle() {
     this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
         this.throwableObjects.forEach((bottle) => {
@@ -94,7 +122,11 @@ class World {
   }
 
 
-  checkContactSalsa() {
+  /**
+ * check collisions between character an bottles
+ * 
+ */
+checkContactSalsa() {
     setInterval(() => {
       this.level.salsas.forEach((salsa) => {
         if (this.character.isColliding(salsa)) {
@@ -110,7 +142,11 @@ class World {
   }
 
 
-  checkContactCoin() {
+  /**
+ * check collisions between character an coins
+ * 
+ */
+checkContactCoin() {
     setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (this.character.isColliding(coin)) {
@@ -126,7 +162,11 @@ class World {
   }
 
 
-  draw() {
+  /**
+ * draw canvas
+ * 
+ */
+draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.layers);
@@ -148,14 +188,24 @@ class World {
   }
 
 
-  addObjectsToMap(objects) {
+  /**
+ * add objects
+ *
+ * @param {*} objects
+ */
+addObjectsToMap(objects) {
     objects.forEach((obj) => {
       this.addToMap(obj);
     });
   }
 
 
-  addToMap(mo) {
+  /**
+ * add to map
+ *
+ * @param {*} mo
+ */
+addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
     }
@@ -166,7 +216,12 @@ class World {
   }
 
 
-  flipImage(mo) {
+  /**
+ * flip image
+ *
+ * @param {*} mo
+ */
+flipImage(mo) {
     this.ctx.save();
     this.ctx.translate(mo.width, 0);
     this.ctx.scale(-1, 1);
@@ -174,7 +229,12 @@ class World {
   }
 
   
-  flipImageBack(mo) {
+  /**
+ * flip image back
+ *
+ * @param {*} mo
+ */
+flipImageBack(mo) {
     this.ctx.restore();
     mo.x = mo.x * -1;
   }

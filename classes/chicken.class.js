@@ -1,11 +1,11 @@
 class Chicken extends MovableObject {
-  y = 360;
-  height = 70;
-  width = 50;
-  intervalIdAnimate;
-  intervalIdPlayAnimation;
-
-  offset = {
+  
+y = 360;
+height = 70;
+width = 50;
+intervalIdAnimate;
+intervalIdPlayAnimation;
+offset = {
     top: 20,
     bottom: 20,
     left: 20,
@@ -20,7 +20,12 @@ class Chicken extends MovableObject {
 
   IMAGES_DEAD = ["assets/3_enemies_chicken/chicken_normal/2_dead/dead.png"];
 
-  constructor() {
+  /**
+ * Creates an instance of Chicken.
+ *
+ * @constructor
+ */
+constructor() {
     super().loadImage("assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
@@ -30,7 +35,11 @@ class Chicken extends MovableObject {
   }
 
 
-  animate() {
+  /**
+ * animate chicken
+ * 
+ */
+animate() {
     this.intervalIdAnimate = setInterval(() => {
       this.moveLeft();
        if (this.x <= 0) {
@@ -45,7 +54,11 @@ class Chicken extends MovableObject {
   }
 
 
-  die() {
+  /**
+ * let chicken die
+ * 
+ */
+die() {
     this.dead = true;
     this.loadImage(this.IMAGES_DEAD);
     clearInterval(this.intervalIdAnimate);

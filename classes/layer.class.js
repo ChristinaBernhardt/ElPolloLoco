@@ -1,10 +1,17 @@
 class layer extends MovableObject {
-  // extends MovableObject
-  height = 480;
-  width = 720;
-  img;
 
-  constructor(imageName, x) {
+height = 480;
+width = 720;
+img;
+
+  /**
+ * Creates an instance of layer.
+ *
+ * @constructor
+ * @param {*} imageName
+ * @param {*} x
+ */
+constructor(imageName, x) {
     super();
     this.loadImage(imageName);
     this.x = x;
@@ -12,7 +19,12 @@ class layer extends MovableObject {
   }
 
 
-  loadImage(path) {
+  /**
+ * load Image
+ *
+ * @param {*} path
+ */
+loadImage(path) {
     this.img = new Image(); 
     this.img.src = path;
   }

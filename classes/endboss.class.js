@@ -1,25 +1,27 @@
-class Endboss extends MovableObject {
-  y = 80;
-  height = 370;
-  width = 350;
-  speed = 0.5;
-  hadFirstContact = false;
 
-  offset = {
+class Endboss extends MovableObject {
+
+y = 80;
+height = 370;
+width = 350;
+speed = 0.5;
+hadFirstContact = false;
+
+offset = {
     top: 0,
     bottom: 0,
     left: 150,
     right: 90, 
   };
 
-  IMAGES_WALKING = [
+IMAGES_WALKING = [
     "assets/4_enemie_boss_chicken/1_walk/G1.png",
     "assets/4_enemie_boss_chicken/1_walk/G2.png",
     "assets/4_enemie_boss_chicken/1_walk/G3.png",
     "assets/4_enemie_boss_chicken/1_walk/G4.png",
   ];
 
-  IMAGES_ALERT = [
+IMAGES_ALERT = [
     "assets/4_enemie_boss_chicken/2_alert/G5.png",
     "assets/4_enemie_boss_chicken/2_alert/G6.png",
     "assets/4_enemie_boss_chicken/2_alert/G7.png",
@@ -30,7 +32,7 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/2_alert/G12.png",
   ];
 
-  IMAGES_ATTACK = [
+IMAGES_ATTACK = [
     "assets/4_enemie_boss_chicken/3_attack/G13.png",
     "assets/4_enemie_boss_chicken/3_attack/G14.png",
     "assets/4_enemie_boss_chicken/3_attack/G15.png",
@@ -41,25 +43,30 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/3_attack/G20.png",
   ];
 
-  IMAGES_HURT = [
+IMAGES_HURT = [
     "assets/4_enemie_boss_chicken/4_hurt/G21.png",
     "assets/4_enemie_boss_chicken/4_hurt/G22.png",
     "assets/4_enemie_boss_chicken/4_hurt/G23.png",
   ];
 
-  IMAGES_DEAD = [
+IMAGES_DEAD = [
     "assets/4_enemie_boss_chicken/5_dead/G24.png",
     "assets/4_enemie_boss_chicken/5_dead/G25.png",
     "assets/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
-  alert_sound = new Audio("audio/alert.mp3");
-  attack_sound = new Audio("audio/attack.mp3");
-  won_sound = new Audio("audio/won2.mp3");
-  endbosshurt_sound = new Audio("audio/hurt.mp3");
-  endbossdie_sound = new Audio("audio/die.mp3");
+alert_sound = new Audio("audio/alert.mp3");
+attack_sound = new Audio("audio/attack.mp3");
+won_sound = new Audio("audio/won2.mp3");
+endbosshurt_sound = new Audio("audio/hurt.mp3");
+endbossdie_sound = new Audio("audio/die.mp3");
 
-  constructor() {
+  /**
+ * Creates an instance of Endboss.
+ *
+ * @constructor
+ */
+constructor() {
     super().loadImage("assets/4_enemie_boss_chicken/2_alert/G5.png");
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_ALERT);
@@ -71,7 +78,11 @@ class Endboss extends MovableObject {
   }
 
 
-  animate() {
+  /**
+ * animate endboss
+ * 
+ */
+animate() {
     let i = 0;
     setInterval(() => {
       if (!this.dead) {
@@ -96,8 +107,6 @@ class Endboss extends MovableObject {
         }
       }
     }, 150);
-
-    
     setInterval(() => {
       if (this.energy === 0) {
         if (!this.dead) {

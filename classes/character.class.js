@@ -1,17 +1,18 @@
 class Character extends MovableObject {
-  x = 200;
-  y = 230;
-  speed = 10;
-  bottles = 0;
-  coins = 0;
-  offset = {
+  
+x = 200;
+y = 230;
+speed = 10;
+bottles = 0;
+coins = 0;
+offset = {
     top: 120,
     bottom: 0,
     left: 0,
     right: 0,
   };
 
-  IMAGES_IDLE = [
+IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
     "assets/2_character_pepe/1_idle/idle/I-2.png",
     "assets/2_character_pepe/1_idle/idle/I-3.png",
@@ -24,7 +25,7 @@ class Character extends MovableObject {
     "assets/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
-  IMAGES_LONG_IDLE = [
+IMAGES_LONG_IDLE = [
     "assets/2_character_pepe/1_idle/long_idle/I-11.png",
     "assets/2_character_pepe/1_idle/long_idle/I-12.png",
     "assets/2_character_pepe/1_idle/long_idle/I-13.png",
@@ -37,7 +38,7 @@ class Character extends MovableObject {
     "assets/2_character_pepe/1_idle/long_idle/I-20.png",
   ];
 
-  IMAGES_WALKING = [
+IMAGES_WALKING = [
     "assets/2_character_pepe/2_walk/W-21.png",
     "assets/2_character_pepe/2_walk/W-22.png",
     "assets/2_character_pepe/2_walk/W-23.png",
@@ -46,7 +47,7 @@ class Character extends MovableObject {
     "assets/2_character_pepe/2_walk/W-26.png",
   ];
 
-  IMAGES_JUMPING = [
+IMAGES_JUMPING = [
     "assets/2_character_pepe/3_jump/J-31.png",
     "assets/2_character_pepe/3_jump/J-32.png",
     "assets/2_character_pepe/3_jump/J-33.png",
@@ -68,13 +69,13 @@ class Character extends MovableObject {
     "assets/2_character_pepe/3_jump/J-39.png",
   ];
 
-  IMAGES_HURT = [
+IMAGES_HURT = [
     "assets/2_character_pepe/4_hurt/H-41.png",
     "assets/2_character_pepe/4_hurt/H-42.png",
     "assets/2_character_pepe/4_hurt/H-43.png",
   ];
 
-  IMAGES_DEAD = [
+IMAGES_DEAD = [
     "assets/2_character_pepe/5_dead/D-51.png",
     "assets/2_character_pepe/5_dead/D-51.png",
     "assets/2_character_pepe/5_dead/D-51.png",
@@ -105,14 +106,19 @@ class Character extends MovableObject {
     "assets/2_character_pepe/5_dead/D-57.png",
   ];
 
-  world;
-  walking_sound = new Audio("audio/walk.mp3");
-  jumping_sound = new Audio("audio/jump.mp3");
-  scream_sound = new Audio("audio/hurt.mp3");
-  loose_sound = new Audio("audio/loose.mp3");
-  sleeping_sound = new Audio("audio/sleeping.mp3");
+world;
+walking_sound = new Audio("audio/walk.mp3");
+jumping_sound = new Audio("audio/jump.mp3");
+scream_sound = new Audio("audio/hurt.mp3");
+loose_sound = new Audio("audio/loose.mp3");
+sleeping_sound = new Audio("audio/sleeping.mp3");
 
-  constructor() {
+  /**
+ * Creates an instance of Character.
+ *
+ * 
+ */
+constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_LONG_IDLE);
@@ -125,7 +131,11 @@ class Character extends MovableObject {
   }
 
 
-  animate() {
+  /**
+ * animate character
+ * 
+ */
+animate() {
     setInterval(() => {
          if (!this.dead) {
         this.walking_sound.pause();
@@ -200,7 +210,11 @@ class Character extends MovableObject {
   }
 
 
-  jump() {
+  /**
+ * let character jump 
+ * 
+ */
+jump() {
     if (isSoundOn) {
       this.jumping_sound.play();
     }
@@ -209,23 +223,42 @@ class Character extends MovableObject {
   }
 
 
-  addBottle(salsa) {
+  /**
+ * add bottles
+ *
+ * @param {*} salsa
+ */
+addBottle(salsa) {
     this.bottles += 10;
   }
 
 
-  addCoin(coin) {
+  /**
+ * add coins
+ *
+ * @param {*} coin
+ */
+addCoin(coin) {
     this.coins += 5;
   }
 
 
-  updateMoveTime() {
+  /**
+ * update move time
+ * 
+ */
+updateMoveTime() {
     let currentTime = new Date().getTime();
     this.lastMoveTime = currentTime;
   }
 
   
-  sleepTime() {
+  /**
+ * returns sleep time over seconds
+ *
+ * @returns {boolean}
+ */
+sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
     return passedTime > 4000;
   }

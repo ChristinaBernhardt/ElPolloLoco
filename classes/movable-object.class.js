@@ -1,4 +1,5 @@
 class MovableObject extends DrawableObject {
+
   speed = 0.15;
   otherDirection = false;
   speedY = 0;
@@ -15,6 +16,10 @@ class MovableObject extends DrawableObject {
   };
 
   
+  /**
+   * gravity of jumping
+   * 
+   */
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
@@ -25,6 +30,11 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * check is above ground
+   *
+   * @returns {boolean}
+   */
   isAboveGround() {
     if (this instanceof ThrowableObject) {
       return true;
@@ -34,6 +44,12 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * check colliding
+   *
+   * @param {*} obj
+   * @returns {boolean}
+   */
   isColliding(obj) {
     return (
       this.x + this.width - this.offset.right >= obj.x + obj.offset.left &&
@@ -44,17 +60,30 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * animate move left
+   * 
+   */
   moveLeft() {
     this.x -= this.speed; // Verringere den Wert von x um 1
   }
 
 
+  /**
+   * animate move right
+   * 
+   */
   moveRight() {
     this.x += this.speed;
     this.otherDirection = false;
   }
 
 
+  /**
+   * animate images
+   *
+   * @param {*} images
+   */
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
@@ -63,6 +92,11 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * animate images just once
+   *
+   * @param {*} images
+   */
   playAnimationOnce(images) {
     if (this.currentImage < images.length) {
       let i = this.currentImage;
@@ -73,6 +107,10 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * hit character
+   * 
+   */
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
@@ -83,6 +121,10 @@ class MovableObject extends DrawableObject {
   }
 
 
+  /**
+   * hit endboss
+   * 
+   */
   hitEndboss() {
     this.energy -= 20;
     if (this.energy < 0) {
@@ -93,19 +135,33 @@ class MovableObject extends DrawableObject {
   }
 
 
-  isHurt() {
+  /**
+ * character is hurt
+ *
+ * @returns {boolean}
+ */
+isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1;
   }
 
 
-  isDead() {
+  /**
+ * character or endboss is dead
+ *
+ * @returns {boolean}
+ */
+isDead() {
     return this.dead;
   }
 
 
-  showAndHideImage() {
+  /**
+ * show and hide images
+ * 
+ */
+showAndHideImage() {
     const imageContainer = document.getElementById("image-container");
     imageContainer.style.display = "block";
     imageContainer.classList.add("fade-in");
