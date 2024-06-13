@@ -10,6 +10,5 @@ class Salsabottle extends MovableObject {
     this.loadImages(this.IMAGES_SALSABOTTLE);
     this.x = 200 + Math.random() * 3000;
     this.y = 100 + Math.random() * 190;
-
   }
 }

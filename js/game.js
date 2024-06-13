@@ -104,17 +104,21 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
+
 function stopGame() {
   clearAllIntervals();
 }
+
 
 function wonGame() {
   clearAllIntervals();
 }
 
+
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
+
 
 function enterFullscreen(element) {
   if (element.requestFullscreen) {
@@ -126,6 +130,7 @@ function enterFullscreen(element) {
     element.webkitRequestFullscreen();
   }
 }
+
 
 function exitFullscreen() {
   if (document.exitFullscreen) {
@@ -141,15 +146,16 @@ function exitFullscreen() {
   }
 }
 
+
 function soundOn() {
   isSoundOn = true;
   audioElements.forEach((audio) => {
     audio.muted = false;
   });
-
   document.getElementById("soundOn").classList.remove("display-none");
   document.getElementById("soundOff").classList.add("display-none");
 }
+
 
 function soundOff() {
   isSoundOn = false;
@@ -160,8 +166,8 @@ function soundOff() {
   document.getElementById("soundOn").classList.add("display-none");
 }
 
+
 function initAudio() {
-  // Fügen Sie alle Audio-Elemente hinzu, die Sie steuern möchten
   audioElements = document.querySelectorAll("audio");
 }
 

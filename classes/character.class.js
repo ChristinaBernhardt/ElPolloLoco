@@ -109,7 +109,6 @@ class Character extends MovableObject {
   walking_sound = new Audio("audio/walk.mp3");
   jumping_sound = new Audio("audio/jump.mp3");
   scream_sound = new Audio("audio/hurt.mp3");
-
   loose_sound = new Audio("audio/loose.mp3");
 
   constructor() {
@@ -123,6 +122,7 @@ class Character extends MovableObject {
     this.applyGravity();
     this.animate();
   }
+
 
   animate() {
     setInterval(() => {
@@ -192,6 +192,7 @@ class Character extends MovableObject {
     }, 150);
   }
 
+
   jump() {
     if (isSoundOn) {
       this.jumping_sound.play();
@@ -200,19 +201,23 @@ class Character extends MovableObject {
     this.currentImage = 0;
   }
 
+
   addBottle(salsa) {
     this.bottles += 10;
   }
 
+
   addCoin(coin) {
     this.coins += 5;
   }
+
 
   updateMoveTime() {
     let currentTime = new Date().getTime();
     this.lastMoveTime = currentTime;
   }
 
+  
   sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
     return passedTime > 4000;

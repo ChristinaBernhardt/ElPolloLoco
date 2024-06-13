@@ -7,11 +7,12 @@ class DrawableObject {
   imageCache = {};
   currentImage = 0;
 
-  // loadImage('img/test.png')
+ 
   loadImage(path) {
-    this.img = new Image(); //Abkürzung
+    this.img = new Image(); 
     this.img.src = path;
   }
+
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);

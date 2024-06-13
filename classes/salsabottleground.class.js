@@ -11,9 +11,7 @@ class Salsabottleground extends MovableObject {
   constructor() {
     super().loadImage("assets/6_salsa_bottle/1_salsa_bottle_on_ground.png");
     this.loadImages(this.IMAGES_SALSABOTTLEONGROUND);
-
     var imageIndex = Math.round(Math.random() * 1);
-
     this.loadImage(this.IMAGES_SALSABOTTLEONGROUND[imageIndex]);
     this.x = 200 + Math.random() * 3000;
     this.y = 380;

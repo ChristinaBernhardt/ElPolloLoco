@@ -14,6 +14,7 @@ class MovableObject extends DrawableObject {
     right: 0,
   };
 
+  
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
@@ -23,6 +24,7 @@ class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+
   isAboveGround() {
     if (this instanceof ThrowableObject) {
       return true;
@@ -30,6 +32,7 @@ class MovableObject extends DrawableObject {
       return this.y < 217;
     }
   }
+
 
   isColliding(obj) {
     return (
@@ -40,14 +43,17 @@ class MovableObject extends DrawableObject {
     );
   }
 
+
   moveLeft() {
     this.x -= this.speed; // Verringere den Wert von x um 1
   }
+
 
   moveRight() {
     this.x += this.speed;
     this.otherDirection = false;
   }
+
 
   playAnimation(images) {
     let i = this.currentImage % images.length;
@@ -55,6 +61,7 @@ class MovableObject extends DrawableObject {
     this.img = this.imageCache[path];
     this.currentImage++;
   }
+
 
   playAnimationOnce(images) {
     if (this.currentImage < images.length) {
@@ -65,6 +72,7 @@ class MovableObject extends DrawableObject {
     }
   }
 
+
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
@@ -74,9 +82,9 @@ class MovableObject extends DrawableObject {
     }
   }
 
+
   hitEndboss() {
     this.energy -= 20;
-
     if (this.energy < 0) {
       this.energy = 0;
     } else {
@@ -84,27 +92,27 @@ class MovableObject extends DrawableObject {
     }
   }
 
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1;
   }
 
+
   isDead() {
     return this.dead;
   }
 
+
   showAndHideImage() {
     const imageContainer = document.getElementById("image-container");
-    // Bild einblenden
     imageContainer.style.display = "block";
     imageContainer.classList.add("fade-in");
-    // Nach 3 Sekunden Bild ausblenden
     setTimeout(() => {
       imageContainer.classList.remove("fade-in");
       imageContainer.classList.add("fade-out");
     }, 3000);
-    // Nach der Ausblend-Animation (1 Sekunde) das Bild komplett ausblenden
     setTimeout(() => {
       imageContainer.style.display = "none";
       imageContainer.classList.remove("fade-out");

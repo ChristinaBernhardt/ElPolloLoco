@@ -22,14 +22,14 @@ class Yellowchicken extends MovableObject {
     this.animate();
   }
 
+  
   animate() {
     this.intervalIdAnimate = setInterval(() => {
       this.moveLeft();
-      // Überprüfe, ob x den gewünschten Wert erreicht hat
       if (this.x <= 0) {
-        clearInterval(this.interval); // Stoppe den Interval, wenn x den Wert erreicht
+        clearInterval(this.interval); 
       }
-    }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
+    }, 1000 / 60); 
 
     this.intervalIdPlayAnimation = setInterval(() => {
       if (this.dead != true) {
@@ -38,9 +38,7 @@ class Yellowchicken extends MovableObject {
     }, 100);
   }
 
-  /**
-   * handle death chickens
-   */
+
   die() {
     this.dead = true;
     this.loadImage(this.IMAGES_DEAD);

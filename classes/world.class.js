@@ -32,6 +32,7 @@ class World {
     this.character.world = this;
   }
 
+
   run() {
     if (isSoundOn) {
       this.play_sound.play();
@@ -43,6 +44,7 @@ class World {
     }, 100);
   }
 
+
   checkThrowableObjects() {
     if (this.keyboard.D && this.character.bottles > 0) {
       this.character.bottles -= 10;
@@ -51,6 +53,7 @@ class World {
       this.throwableObjects.push(bottle);
     }
   }
+
 
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
@@ -73,6 +76,7 @@ class World {
     });
   }
 
+
   checkCollisionsEndbossBottle() {
     this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
@@ -92,6 +96,7 @@ class World {
     });
   }
 
+
   checkContactSalsa() {
     setInterval(() => {
       this.level.salsas.forEach((salsa) => {
@@ -106,6 +111,7 @@ class World {
       });
     }, 200);
   }
+
 
   checkContactCoin() {
     setInterval(() => {
@@ -122,9 +128,9 @@ class World {
     }, 200);
   }
 
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.layers);
     this.addObjectsToMap(this.level.clouds);
@@ -133,19 +139,17 @@ class World {
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsas);
     this.addObjectsToMap(this.throwableObjects);
-
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
     this.addToMap(this.statusBarCoin);
     this.addToMap(this.statusBarBottle);
     this.addToMap(this.statusBarEndboss);
-
-    // Draw wird immer wieder aufgerufen
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
     });
   }
+
 
   addObjectsToMap(objects) {
     objects.forEach((obj) => {
@@ -153,16 +157,17 @@ class World {
     });
   }
 
+
   addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    // mo.drawFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
   }
+
 
   flipImage(mo) {
     this.ctx.save();
@@ -171,6 +176,7 @@ class World {
     mo.x = mo.x * -1;
   }
 
+  
   flipImageBack(mo) {
     this.ctx.restore();
     mo.x = mo.x * -1;

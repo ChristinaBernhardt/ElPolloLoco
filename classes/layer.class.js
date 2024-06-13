@@ -11,9 +11,9 @@ class layer extends MovableObject {
     this.y = 480 - this.height;
   }
 
-  // loadImage('img/test.png')
+
   loadImage(path) {
-    this.img = new Image(); //Abkürzung
+    this.img = new Image(); 
     this.img.src = path;
   }
 }

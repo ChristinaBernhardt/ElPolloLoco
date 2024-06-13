@@ -57,7 +57,7 @@ class Endboss extends MovableObject {
   attack_sound = new Audio("audio/attack.mp3");
   won_sound = new Audio("audio/won2.mp3");
   endbosshurt_sound = new Audio("audio/hurt.mp3");
- endbossdie_sound = new Audio("audio/die.mp3");
+  endbossdie_sound = new Audio("audio/die.mp3");
 
   constructor() {
     super().loadImage("assets/4_enemie_boss_chicken/2_alert/G5.png");
@@ -67,9 +67,9 @@ class Endboss extends MovableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.x = 4000;
-    //   this.speed = 0.15 + Math.random() * 0.5;
     this.animate();
   }
+
 
   animate() {
     let i = 0;
@@ -80,31 +80,38 @@ class Endboss extends MovableObject {
         } else {
           this.playAnimation(this.IMAGES_ATTACK);
         }
-
         i++;
         if (world.character.x > 3470 && !this.hadFirstContact) {
-          if (isSoundOn) {this.alert_sound.play()};
+          if (isSoundOn) {
+            this.alert_sound.play();
+          }
           i = 0;
           this.hadFirstContact = true;
         }
-
         if (world.character.x > 3470 && this.hadFirstContact) {
-          if (isSoundOn) { this.attack_sound.play()};
+          if (isSoundOn) {
+            this.attack_sound.play();
+          }
           this.moveLeft();
         }
       }
     }, 150);
 
+    
     setInterval(() => {
       if (this.energy === 0) {
         if (!this.dead) {
           this.currentImage = 0;
-          if (isSoundOn) {this.endbossdie_sound.play()};
+          if (isSoundOn) {
+            this.endbossdie_sound.play();
+          }
           this.dead = true;
           setTimeout(() => {
             wonGame();
-                    let gameOverDiv = document.getElementById("game-won");
-            if (isSoundOn) {this.won_sound.play()};
+            let gameOverDiv = document.getElementById("game-won");
+            if (isSoundOn) {
+              this.won_sound.play();
+            }
             gameOverDiv.style.display = "block";
             setTimeout(() => {
               window.location.href = "index.html";
@@ -113,7 +120,9 @@ class Endboss extends MovableObject {
         }
         this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        if (isSoundOn) {this.endbosshurt_sound.play()};
+        if (isSoundOn) {
+          this.endbosshurt_sound.play();
+        }
         this.playAnimation(this.IMAGES_HURT);
       }
     }, 150);
