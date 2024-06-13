@@ -1,6 +1,5 @@
 body {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
@@ -17,6 +16,15 @@ body {
     background-repeat: no-repeat;
 }
 
+.maincontent {
+    position: relative;
+}
+.spiegeln {
+    transform: scaleX(-1);
+}
+
+
+
 h1 {
     text-align: center;
     font-size: 48px;
@@ -31,8 +39,7 @@ a {
 }
 
 .canvas {
-    position: absolute;
-    left: 120px;
+    position: relative;
     background-color: black;
     z-index: -1;
 }
@@ -43,6 +50,11 @@ a {
 
 .display-none {
     display: none;
+
+}
+
+.display-flex {
+    display: flex;
 
 }
 
@@ -94,14 +106,15 @@ a {
 }
 
 .iconBar {
-    position: relative;
-margin-left: 20vw;
-    display: flex;
+    position: absolute;
+    top: 0;
+
     justify-content: center;
     width: 100%;
     gap: 20px;
-    padding-top: 10px;
-z-index: 1;
+    padding-top: 20px;
+    z-index: 1;
+
     img {
         height: 24px;
     }
@@ -112,6 +125,25 @@ z-index: 1;
     }
 }
 
+.iconBarMobile {
+    position: absolute;
+    bottom: 0;
+
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 20px;
+    z-index: 1;
+
+    img {
+        height: 24px;
+    }
+
+    img:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
 
 .hover:hover {
     cursor: pointer;
@@ -173,7 +205,12 @@ z-index: 1;
     h1 {
         display: none;
     }
+    .iconBarMobile {
+        display: flex;
+    }
 }
+
+
 
 /* @media only screen and (max-width: 480px) {
     body {

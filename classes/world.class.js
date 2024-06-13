@@ -10,7 +10,6 @@ class World {
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
-  mute = new Mute();
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -129,7 +128,6 @@ class World {
     this.addToMap(this.statusBarCoin);
     this.addToMap(this.statusBarBottle);
     this.addToMap(this.statusBarEndboss);
-    this.addToMap(this.mute);
 
     // Draw wird immer wieder aufgerufen
     let self = this;
