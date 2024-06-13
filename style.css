@@ -7,9 +7,7 @@ body {
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
     background-size: cover;
-    /* Fügt hinzu, dass das Bild die gesamte Seite abdeckt */
     background-attachment: fixed;
-    /* Verhindert, dass das Bild beim Scrollen verschiebt */
     font-family: 'comic', Arial, Helvetica, sans-serif;
     padding-left: 20px;
     padding-right: 20px;
@@ -19,11 +17,10 @@ body {
 .maincontent {
     position: relative;
 }
+
 .spiegeln {
     transform: scaleX(-1);
 }
-
-
 
 h1 {
     text-align: center;
@@ -50,15 +47,12 @@ a {
 
 .display-none {
     display: none;
-
 }
 
 .display-flex {
     display: flex;
-
 }
 
-/* Container holding the image and the text */
 .container {
     width: 720px;
     height: 480px;
@@ -67,37 +61,30 @@ a {
     color: white;
 }
 
-/* Bottom left text */
 .bottom-left {
     position: absolute;
     bottom: 80px;
     left: 16px;
 }
 
-/* Top left text */
 .top-left {
     position: absolute;
     top: 8px;
     left: 16px;
 }
 
-/* Top right text */
 .top-right {
     position: absolute;
     top: 8px;
     right: 16px;
 }
 
-/* Bottom right text */
 .bottom-right {
     position: absolute;
     bottom: 80px;
     right: 16px;
 }
 
-
-
-/* Centered text */
 .centered {
     position: absolute;
     bottom: 80px;
@@ -108,17 +95,14 @@ a {
 .iconBar {
     position: absolute;
     top: 0;
-
     justify-content: center;
     width: 100%;
     gap: 20px;
     padding-top: 20px;
     z-index: 1;
-
     img {
         height: 24px;
     }
-
     img:hover {
         cursor: pointer;
         transform: scale(1.2);
@@ -126,7 +110,6 @@ a {
 }
 
 .iconBarMobile {
-
     position: absolute;
     bottom: 0;
     justify-content: center;
@@ -134,11 +117,9 @@ a {
     gap: 20px;
     padding-bottom: 20px;
     z-index: 1;
-
     img {
         height: 24px;
     }
-
     img:hover {
         cursor: pointer;
         transform: scale(1.2);
@@ -162,6 +143,7 @@ a {
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
 }
+
 .img-won {
     width: 100vw;
     height: 100vh;
@@ -184,6 +166,26 @@ a {
     text-align: center;
 }
 
+#deviceNotice {
+    background-image: url('assets/5_background/abstract-4582133_1280.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    display: none;
+    img {
+        height: 120px;
+    }
+    span {
+        font-size: 34px;
+    }
+}
+
 @font-face {
     font-family: 'comic';
     src: url('assets/fonts/Fontcomic.ttf') format('truetype');
@@ -193,6 +195,15 @@ a {
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 600px) {
+
+    /* orientation: portrait-> Regel die gilt wenn das GerÃ¤t in 
+    Hochformat gehalten wird (Portrait)*/
+    #deviceNotice {
+        display: flex;
     }
 }
 
@@ -206,22 +217,10 @@ a {
     h1 {
         display: none;
     }
+
     .iconBarMobile {
         display: flex;
     }
 }
 
 
-
-/* @media only screen and (max-width: 480px) {
-    body {
-        transform: rotate(90deg);
-        transform-origin: top left;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
-} */

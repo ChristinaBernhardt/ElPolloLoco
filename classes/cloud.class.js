@@ -18,23 +18,13 @@ class Cloud extends MovableObject {
     this.loadImages(this.IMAGES_CLOUDS);
     var imageIndex = Math.round(Math.random() * 2);
     this.loadImage(this.IMAGES_CLOUDS[imageIndex]);
-        this.x = cloudPosition;
+    this.x = cloudPosition;
     this.animate();
   }
 
-
-
-
-
   animate() {
     setInterval(() => {
-    this.moveRight();
-           
-    },60/1000)};
+      this.moveRight();
+    }, 60 / 1000);
   }
-
-
-
-
-
-
+}

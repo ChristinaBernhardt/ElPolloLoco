@@ -7,8 +7,6 @@ let i = 1;
 let isSoundOn = true;
 let audioElements = [];
 
-
-
 function init() {
   initLevel();
   bindBtsPressEvents();
@@ -145,8 +143,8 @@ function exitFullscreen() {
 
 function soundOn() {
   isSoundOn = true;
-  audioElements.forEach(audio => {
-      audio.muted = false;
+  audioElements.forEach((audio) => {
+    audio.muted = false;
   });
 
   document.getElementById("soundOn").classList.remove("display-none");
@@ -154,22 +152,17 @@ function soundOn() {
 }
 
 function soundOff() {
-
   isSoundOn = false;
-  audioElements.forEach(audio => {
-      audio.muted = true;
+  audioElements.forEach((audio) => {
+    audio.muted = true;
   });
   document.getElementById("soundOff").classList.remove("display-none");
   document.getElementById("soundOn").classList.add("display-none");
 }
 
-
-
 function initAudio() {
   // Fügen Sie alle Audio-Elemente hinzu, die Sie steuern möchten
-  audioElements = document.querySelectorAll('audio');
+  audioElements = document.querySelectorAll("audio");
 }
 
-
-
-document.addEventListener('DOMContentLoaded', initAudio);
+document.addEventListener("DOMContentLoaded", initAudio);

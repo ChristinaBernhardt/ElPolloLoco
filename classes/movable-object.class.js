@@ -24,11 +24,12 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    if (this instanceof ThrowableObject){
+    if (this instanceof ThrowableObject) {
       return true;
     } else {
-    return this.y < 217;
-  }}
+      return this.y < 217;
+    }
+  }
 
   isColliding(obj) {
     return (
@@ -38,7 +39,6 @@ class MovableObject extends DrawableObject {
       this.y + this.offset.top <= obj.y + obj.height - obj.offset.bottom
     );
   }
-
 
   moveLeft() {
     this.x -= this.speed; // Verringere den Wert von x um 1

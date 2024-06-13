@@ -20,25 +20,20 @@ class Level {
   deleteSalsa(salsa) {
     let index = this.salsas.indexOf(salsa);
     let x = this.salsas.splice(index, 1);
-
   }
 
   deleteEnemy(enemy) {
-
     setTimeout(() => {
       let index = this.enemies.indexOf(enemy);
-                 if (index > -1) { // Prüfe, ob der Feind noch in der Liste ist
+      if (index > -1) {
+        // Prüfe, ob der Feind noch in der Liste ist
         let x = this.enemies.splice(index, 1);
-
       }
     }, 1000); // 1000 Millisekunden = 1 Sekunde
   }
 
-
-
   deleteCoin(coin) {
     let index = this.coins.indexOf(coin);
     let x = this.coins.splice(index, 1);
-
   }
 }

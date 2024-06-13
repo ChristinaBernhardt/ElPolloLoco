@@ -1,4 +1,4 @@
-class layer extends MovableObject{
+class layer extends MovableObject {
   // extends MovableObject
   height = 480;
   width = 720;
@@ -6,7 +6,7 @@ class layer extends MovableObject{
 
   constructor(imageName, x) {
     super();
-    this.loadImage(imageName)
+    this.loadImage(imageName);
     this.x = x;
     this.y = 480 - this.height;
   }

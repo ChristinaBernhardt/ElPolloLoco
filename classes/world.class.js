@@ -11,6 +11,10 @@ class World {
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
   throwableObjects = [];
+  play_sound = new Audio("audio/play.mp3");
+  chickendie_sound = new Audio("audio/chickendie.mp3");
+  collectBottle_sound = new Audio("audio/collectbottle.mp3");
+  collectCoin_sound = new Audio("audio/collectcoin.mp3");
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -21,6 +25,7 @@ class World {
     this.run();
     this.checkContactSalsa();
     this.checkContactCoin();
+    this.play_sound.loop = true;
   }
 
   setWorld() {
@@ -28,6 +33,9 @@ class World {
   }
 
   run() {
+    if (isSoundOn) {
+      this.play_sound.play();
+    }
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowableObjects();
@@ -52,11 +60,14 @@ class World {
           (enemy instanceof Chicken || enemy instanceof Yellowchicken)
         ) {
           enemy.die();
+
           this.level.deleteEnemy(enemy);
+          if (isSoundOn) {
+            this.chickendie_sound.play();
+          }
         } else {
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
-
         }
       }
     });
@@ -85,10 +96,12 @@ class World {
     setInterval(() => {
       this.level.salsas.forEach((salsa) => {
         if (this.character.isColliding(salsa)) {
+          if (isSoundOn) {
+            this.collectBottle_sound.play();
+          }
           this.character.addBottle(salsa);
           this.level.deleteSalsa(salsa);
           this.statusBarBottle.setPercentage(this.character.bottles);
-    
         }
       });
     }, 200);
@@ -98,10 +111,12 @@ class World {
     setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (this.character.isColliding(coin)) {
+          if (isSoundOn) {
+            this.collectCoin_sound.play();
+          }
           this.character.addCoin(coin);
           this.level.deleteCoin(coin);
           this.statusBarCoin.setPercentage(this.character.coins);
-  
         }
       });
     }, 200);

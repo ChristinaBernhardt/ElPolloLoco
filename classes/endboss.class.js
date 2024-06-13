@@ -56,6 +56,8 @@ class Endboss extends MovableObject {
   alert_sound = new Audio("audio/alert.mp3");
   attack_sound = new Audio("audio/attack.mp3");
   won_sound = new Audio("audio/won2.mp3");
+  endbosshurt_sound = new Audio("audio/hurt.mp3");
+ endbossdie_sound = new Audio("audio/die.mp3");
 
   constructor() {
     super().loadImage("assets/4_enemie_boss_chicken/2_alert/G5.png");
@@ -97,6 +99,7 @@ class Endboss extends MovableObject {
       if (this.energy === 0) {
         if (!this.dead) {
           this.currentImage = 0;
+          if (isSoundOn) {this.endbossdie_sound.play()};
           this.dead = true;
           setTimeout(() => {
             wonGame();
@@ -110,7 +113,7 @@ class Endboss extends MovableObject {
         }
         this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        if (isSoundOn) {this.scream_sound.play()};
+        if (isSoundOn) {this.endbosshurt_sound.play()};
         this.playAnimation(this.IMAGES_HURT);
       }
     }, 150);

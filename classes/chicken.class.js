@@ -32,9 +32,9 @@ class Chicken extends MovableObject {
     }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
 
     this.intervalIdPlayAnimation = setInterval(() => {
-           if (this.dead != true){
-            this.playAnimation(this.IMAGES_WALKING);
-          }
+      if (this.dead != true) {
+        this.playAnimation(this.IMAGES_WALKING);
+      }
     }, 100);
   }
 
@@ -42,14 +42,11 @@ class Chicken extends MovableObject {
    * handle death chickens
    */
   die() {
-      this.dead = true
-      this.loadImage(this.IMAGES_DEAD);
-      clearInterval(this.intervalIdAnimate);
-      setTimeout(() => {
+    this.dead = true;
+    this.loadImage(this.IMAGES_DEAD);
+    clearInterval(this.intervalIdAnimate);
+    setTimeout(() => {
       clearInterval(this.intervalIdPlayAnimation);
-       }, 500);
-    }
+    }, 500);
   }
-
-
-
+}

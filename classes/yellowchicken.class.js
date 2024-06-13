@@ -11,9 +11,7 @@ class Yellowchicken extends MovableObject {
     "assets/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
-  IMAGES_DEAD = [
-    "assets/3_enemies_chicken/chicken_small/2_dead/dead.png"
-  ]
+  IMAGES_DEAD = ["assets/3_enemies_chicken/chicken_small/2_dead/dead.png"];
 
   constructor() {
     super().loadImage("assets/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
@@ -34,9 +32,9 @@ class Yellowchicken extends MovableObject {
     }, 1000 / 60); // Führe die Funktion 60 Mal pro Sekunde aus
 
     this.intervalIdPlayAnimation = setInterval(() => {
-           if (this.dead != true){
-            this.playAnimation(this.IMAGES_WALKING);
-          }
+      if (this.dead != true) {
+        this.playAnimation(this.IMAGES_WALKING);
+      }
     }, 100);
   }
 
@@ -44,13 +42,11 @@ class Yellowchicken extends MovableObject {
    * handle death chickens
    */
   die() {
-      this.dead = true
-      this.loadImage(this.IMAGES_DEAD);
-      clearInterval(this.intervalIdAnimate);
-      setTimeout(() => {
+    this.dead = true;
+    this.loadImage(this.IMAGES_DEAD);
+    clearInterval(this.intervalIdAnimate);
+    setTimeout(() => {
       clearInterval(this.intervalIdPlayAnimation);
-
-      }, 500);
-    }
+    }, 500);
   }
-
+}
