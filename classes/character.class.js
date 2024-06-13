@@ -4,7 +4,6 @@ class Character extends MovableObject {
   speed = 10;
   bottles = 0;
   coins = 0;
-
   offset = {
     top: 70,
     bottom: 0,
@@ -135,12 +134,16 @@ class Character extends MovableObject {
           this.x < this.world.level.level_end_x
         ) {
           this.moveRight();
-          if (isSoundOn) {this.walking_sound.play()};
+          if (isSoundOn) {
+            this.walking_sound.play();
+          }
         }
         if (this.world.keyboard.LEFT && this.x > -615) {
           this.moveLeft();
           this.otherDirection = true;
-          if (isSoundOn) {this.walking_sound.play()};
+          if (isSoundOn) {
+            this.walking_sound.play();
+          }
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
           this.jump();
@@ -156,10 +159,9 @@ class Character extends MovableObject {
           this.dead = true;
           setTimeout(() => {
             stopGame();
-  
             let gameOverDiv = document.getElementById("game-over");
             gameOverDiv.style.display = "block";
-          
+
             setTimeout(() => {
               window.location.href = "index.html";
             }, 2000);
@@ -167,7 +169,9 @@ class Character extends MovableObject {
         }
         this.playAnimationOnce(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        if (isSoundOn) {this.scream_sound.play()};
+        if (isSoundOn) {
+          this.scream_sound.play();
+        }
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
         this.updateMoveTime();
@@ -187,27 +191,24 @@ class Character extends MovableObject {
 
   jump() {
     if (isSoundOn) {
-    this.jumping_sound.play()};
+      this.jumping_sound.play();
+    }
     this.speedY = 30;
     this.currentImage = 0;
   }
 
   addBottle(salsa) {
-    this.bottles += 10; // Erhöht die Anzahl der Flaschen um 10
-    console.log("Anzahl der Flaschen hier:", this.bottles); // Gibt die neue Anzahl der Flaschen aus
+    this.bottles += 10;
   }
 
   addCoin(coin) {
-    this.coins += 5; // Erhöht die Anzahl der Coins um 5
-
+    this.coins += 5;
   }
-
 
   updateMoveTime() {
     let currentTime = new Date().getTime();
     this.lastMoveTime = currentTime;
   }
-
 
   sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
