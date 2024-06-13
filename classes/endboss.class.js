@@ -53,18 +53,9 @@ class Endboss extends MovableObject {
     "assets/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
-  alert_sound = new Audio({
-    loop: true,
-    volume: 0.5,
-    src: ["audio/alert.mp3"],
-  });
-
-  attack_sound = new Audio({
-    loop: true,
-    volume: 0.5,
-    src: ["audio/attack.mp3"],
-  });
-  won_sound = new Audio("audio/won.mp3");
+  alert_sound = new Audio("audio/alert.mp3");
+  attack_sound = new Audio("audio/attack.mp3");
+  won_sound = new Audio("audio/won2.mp3");
 
   constructor() {
     super().loadImage("assets/4_enemie_boss_chicken/2_alert/G5.png");
@@ -111,6 +102,7 @@ class Endboss extends MovableObject {
             wonGame();
             console.log("Game won");
             let gameOverDiv = document.getElementById("game-won");
+            if (isSoundOn) {this.won_sound.play()};
             gameOverDiv.style.display = "block";
             setTimeout(() => {
               window.location.href = "index.html";
