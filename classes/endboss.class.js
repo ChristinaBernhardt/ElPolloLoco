@@ -90,13 +90,13 @@ class Endboss extends MovableObject {
 
         i++;
         if (world.character.x > 3470 && !this.hadFirstContact) {
-          this.alert_sound.play();
+          if (isSoundOn) {this.alert_sound.play()};
           i = 0;
           this.hadFirstContact = true;
         }
 
         if (world.character.x > 3470 && this.hadFirstContact) {
-          this.attack_sound.play();
+          if (isSoundOn) { this.attack_sound.play()};
           this.moveLeft();
         }
       }
@@ -119,7 +119,7 @@ class Endboss extends MovableObject {
         }
         this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        // this.scream_sound.play();
+        if (isSoundOn) {this.scream_sound.play()};
         this.playAnimation(this.IMAGES_HURT);
       }
     }, 150);

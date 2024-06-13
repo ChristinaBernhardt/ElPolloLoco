@@ -4,9 +4,15 @@ let keyboard = new Keyboard();
 let intervalIds = [];
 let i = 1;
 
+let isSoundOn = true;
+let audioElements = [];
+
+
+
 function init() {
   initLevel();
   bindBtsPressEvents();
+  initAudio();
   canvas = document.getElementById("canvas");
   document.getElementById("overlay").classList.add("display-none");
   document.getElementById("iconBar").classList.add("display-flex");
@@ -138,6 +144,10 @@ function exitFullscreen() {
 }
 
 function soundOn() {
+  isSoundOn = true;
+  audioElements.forEach(audio => {
+      audio.muted = false;
+  });
   console.log("unmute");
   document.getElementById("soundOn").classList.remove("display-none");
   document.getElementById("soundOff").classList.add("display-none");
@@ -145,6 +155,21 @@ function soundOn() {
 
 function soundOff() {
   console.log("mute");
+  isSoundOn = false;
+  audioElements.forEach(audio => {
+      audio.muted = true;
+  });
   document.getElementById("soundOff").classList.remove("display-none");
   document.getElementById("soundOn").classList.add("display-none");
 }
+
+
+
+function initAudio() {
+  // Fügen Sie alle Audio-Elemente hinzu, die Sie steuern möchten
+  audioElements = document.querySelectorAll('audio');
+}
+
+
+
+document.addEventListener('DOMContentLoaded', initAudio);

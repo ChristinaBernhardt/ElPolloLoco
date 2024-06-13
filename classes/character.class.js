@@ -187,7 +187,8 @@ class Character extends MovableObject {
   }
 
   jump() {
-    this.jumping_sound.play();
+    if (isSoundOn) {
+    this.jumping_sound.play()};
     this.speedY = 30;
     this.currentImage = 0;
   }
