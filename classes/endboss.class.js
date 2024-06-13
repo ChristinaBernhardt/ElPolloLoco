@@ -100,8 +100,7 @@ class Endboss extends MovableObject {
           this.dead = true;
           setTimeout(() => {
             wonGame();
-            console.log("Game won");
-            let gameOverDiv = document.getElementById("game-won");
+                    let gameOverDiv = document.getElementById("game-won");
             if (isSoundOn) {this.won_sound.play()};
             gameOverDiv.style.display = "block";
             setTimeout(() => {

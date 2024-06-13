@@ -49,7 +49,7 @@ class Yellowchicken extends MovableObject {
       clearInterval(this.intervalIdAnimate);
       setTimeout(() => {
       clearInterval(this.intervalIdPlayAnimation);
-      console.log(this.intervalIdAnimate, this.intervalIdPlayAnimation);
+
       }, 500);
     }
   }

@@ -148,13 +148,13 @@ function soundOn() {
   audioElements.forEach(audio => {
       audio.muted = false;
   });
-  console.log("unmute");
+
   document.getElementById("soundOn").classList.remove("display-none");
   document.getElementById("soundOff").classList.add("display-none");
 }
 
 function soundOff() {
-  console.log("mute");
+
   isSoundOn = false;
   audioElements.forEach(audio => {
       audio.muted = true;

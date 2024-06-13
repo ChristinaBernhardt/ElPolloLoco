@@ -54,10 +54,7 @@ class World {
         } else {
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
-          // console.log(
-          //   "collision with Character, energy ",
-          //   this.character.energy
-          // );
+
         }
       }
     });
@@ -89,10 +86,7 @@ class World {
           this.character.addBottle(salsa);
           this.level.deleteSalsa(salsa);
           this.statusBarBottle.setPercentage(this.character.bottles);
-          // console.log(
-          //   "collision with Character, salsa ",
-          //   this.character.bottles
-          // );
+    
         }
       });
     }, 200);
@@ -105,7 +99,7 @@ class World {
           this.character.addCoin(coin);
           this.level.deleteCoin(coin);
           this.statusBarCoin.setPercentage(this.character.coins);
-          // console.log("collision with Character, coin ", this.character.coins);
+  
         }
       });
     }, 200);
