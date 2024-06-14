@@ -58,7 +58,8 @@ a {
 }
 
 .container {
-
+    width: 720px;
+    height: 98vh;
     position: relative;
     text-align: center;
     color: white;
@@ -113,6 +114,7 @@ a {
 }
 
 .iconBarMobile {
+    display: none;
     position: absolute;
     bottom: 0;
     justify-content: center;
@@ -221,10 +223,7 @@ a {
     canvas {
         height: 100vh;
     }
-    .maincontent {
-        height: 100vh;}
-        .container {
-            height: 100vh;}
+ 
 }
 
 @media (max-height: 480px) {
