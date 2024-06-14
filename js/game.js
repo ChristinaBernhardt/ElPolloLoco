@@ -20,7 +20,7 @@ function init() {
   canvas = document.getElementById("canvas");
   document.getElementById("overlay").classList.add("display-none");
   document.getElementById("iconBar").classList.add("display-flex");
-  document.getElementById("iconBarMobile").classList.add("display-flex");
+  document.getElementById("iconBarMobile").classList.add("mobileIconShow");
   canvas.style.display = "block";
   world = new World(canvas, keyboard);
 }
