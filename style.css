@@ -119,7 +119,6 @@ height: 320px;
 }
 
 .iconBarMobile {
-    display: none;
     position: absolute;
     bottom: 0;
     justify-content: center;
