@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 98%;
+    height: 100vh;
     margin: 0;
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
@@ -66,7 +66,7 @@ a {
 }
 .imgstart {
     position: relative;
-height: 98vh;
+height: 320px;
  
 }
 
@@ -205,13 +205,15 @@ height: 98vh;
     /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }
 }
 
-@media (orientation: portrait) and (max-width: 480px) {
+@media (orientation: portrait) and (max-width: 600px) {
 
     /* orientation: portrait-> Regel die gilt wenn das GerÃ¤t in 
     Hochformat gehalten wird (Portrait)*/
