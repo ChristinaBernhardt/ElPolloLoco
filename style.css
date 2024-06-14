@@ -205,8 +205,6 @@ height: 320px;
     /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
-
-
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;

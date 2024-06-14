@@ -1,18 +1,17 @@
 class Character extends MovableObject {
-  
-x = 200;
-y = 230;
-speed = 10;
-bottles = 0;
-coins = 0;
-offset = {
+  x = 200;
+  y = 230;
+  speed = 10;
+  bottles = 0;
+  coins = 0;
+  offset = {
     top: 120,
     bottom: 0,
     left: 0,
     right: 0,
   };
 
-IMAGES_IDLE = [
+  IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-1.png",
     "assets/2_character_pepe/1_idle/idle/I-2.png",
     "assets/2_character_pepe/1_idle/idle/I-3.png",
@@ -25,7 +24,7 @@ IMAGES_IDLE = [
     "assets/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
-IMAGES_LONG_IDLE = [
+  IMAGES_LONG_IDLE = [
     "assets/2_character_pepe/1_idle/long_idle/I-11.png",
     "assets/2_character_pepe/1_idle/long_idle/I-12.png",
     "assets/2_character_pepe/1_idle/long_idle/I-13.png",
@@ -38,7 +37,7 @@ IMAGES_LONG_IDLE = [
     "assets/2_character_pepe/1_idle/long_idle/I-20.png",
   ];
 
-IMAGES_WALKING = [
+  IMAGES_WALKING = [
     "assets/2_character_pepe/2_walk/W-21.png",
     "assets/2_character_pepe/2_walk/W-22.png",
     "assets/2_character_pepe/2_walk/W-23.png",
@@ -47,7 +46,7 @@ IMAGES_WALKING = [
     "assets/2_character_pepe/2_walk/W-26.png",
   ];
 
-IMAGES_JUMPING = [
+  IMAGES_JUMPING = [
     "assets/2_character_pepe/3_jump/J-31.png",
     "assets/2_character_pepe/3_jump/J-32.png",
     "assets/2_character_pepe/3_jump/J-33.png",
@@ -69,13 +68,13 @@ IMAGES_JUMPING = [
     "assets/2_character_pepe/3_jump/J-39.png",
   ];
 
-IMAGES_HURT = [
+  IMAGES_HURT = [
     "assets/2_character_pepe/4_hurt/H-41.png",
     "assets/2_character_pepe/4_hurt/H-42.png",
     "assets/2_character_pepe/4_hurt/H-43.png",
   ];
 
-IMAGES_DEAD = [
+  IMAGES_DEAD = [
     "assets/2_character_pepe/5_dead/D-51.png",
     "assets/2_character_pepe/5_dead/D-51.png",
     "assets/2_character_pepe/5_dead/D-51.png",
@@ -106,19 +105,20 @@ IMAGES_DEAD = [
     "assets/2_character_pepe/5_dead/D-57.png",
   ];
 
-world;
-walking_sound = new Audio("audio/walk.mp3");
-jumping_sound = new Audio("audio/jump.mp3");
-scream_sound = new Audio("audio/hurt.mp3");
-loose_sound = new Audio("audio/loose.mp3");
-sleeping_sound = new Audio("audio/sleeping.mp3");
+  world;
+  walking_sound = new Audio("audio/walk.mp3");
+  jumping_sound = new Audio("audio/jump.mp3");
+  scream_sound = new Audio("audio/hurt.mp3");
+  loose_sound = new Audio("audio/loose.mp3");
+  sleeping_sound = new Audio("audio/sleeping.mp3");
+
 
   /**
- * Creates an instance of Character.
- *
- * 
- */
-constructor() {
+   * Creates an instance of Character.
+   *
+   *
+   */
+  constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_LONG_IDLE);
@@ -132,12 +132,22 @@ constructor() {
 
 
   /**
- * animate character
- * 
- */
-animate() {
+   * animate character
+   *
+   */
+  animate() {
+    this.startintervalCharacter1();
+    this.startintervalCharacter2();
+  }
+
+
+  /**
+   * animate character move
+   *
+   */
+  startintervalCharacter1() {
     setInterval(() => {
-         if (!this.dead) {
+      if (!this.dead) {
         this.walking_sound.pause();
         if (this.world.keyboard.D) {
           this.throw;
@@ -153,12 +163,7 @@ animate() {
           }
         }
         if (this.world.keyboard.LEFT && this.x > -615) {
-          this.sleeping_sound.pause();
-          this.moveLeft();
-          this.otherDirection = true;
-          if (isSoundOn) {
-            this.walking_sound.play();
-          }
+          this.movecharacterleft();
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
           this.sleeping_sound.pause();
@@ -167,24 +172,17 @@ animate() {
         this.world.camera_x = -this.x + 100;
       }
     }, 1000 / 60);
+  }
+
+
+  /**
+   * animate character hurt and die
+   *
+   */
+  startintervalCharacter2() {
     setInterval(() => {
       if (this.energy === 0) {
-        if (!this.dead) {
-          this.currentImage = 0;
-          this.dead = true;
-          setTimeout(() => {
-            stopGame();
-            let gameOverDiv = document.getElementById("game-over");
-            gameOverDiv.style.display = "block";
-            if (isSoundOn) {
-              this.loose_sound.play();
-            }
-            setTimeout(() => {
-              window.location.href = "index.html";
-            }, 2000);
-          }, 2000);
-        }
-        this.playAnimationOnce(this.IMAGES_DEAD);
+        this.energynull();
       } else if (this.isHurt()) {
         if (isSoundOn) {
           this.scream_sound.play();
@@ -210,11 +208,49 @@ animate() {
   }
 
 
+    /**
+   * let character die
+   *
+   */
+  energynull() {
+    if (!this.dead) {
+      this.currentImage = 0;
+      this.dead = true;
+      setTimeout(() => {
+        stopGame();
+        let gameOverDiv = document.getElementById("game-over");
+        gameOverDiv.style.display = "block";
+        if (isSoundOn) {
+          this.loose_sound.play();
+        }
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
+      }, 2000);
+    }
+    this.playAnimationOnce(this.IMAGES_DEAD);
+  }
+
+
+    /**
+   * let character jump
+   *
+   */
+  movecharacterleft() {
+    this.sleeping_sound.pause();
+    this.moveLeft();
+    this.otherDirection = true;
+    if (isSoundOn) {
+      this.walking_sound.play();
+    }
+  }
+
+
   /**
- * let character jump 
- * 
- */
-jump() {
+   * let character jump
+   *
+   */
+  jump() {
     if (isSoundOn) {
       this.jumping_sound.play();
     }
@@ -224,41 +260,41 @@ jump() {
 
 
   /**
- * add bottles
- *
- * @param {*} salsa
- */
-addBottle(salsa) {
+   * add bottles
+   *
+   * @param {*} salsa
+   */
+  addBottle(salsa) {
     this.bottles += 10;
   }
 
 
   /**
- * add coins
- *
- * @param {*} coin
- */
-addCoin(coin) {
+   * add coins
+   *
+   * @param {*} coin
+   */
+  addCoin(coin) {
     this.coins += 5;
   }
 
 
   /**
- * update move time
- * 
- */
-updateMoveTime() {
+   * update move time
+   *
+   */
+  updateMoveTime() {
     let currentTime = new Date().getTime();
     this.lastMoveTime = currentTime;
   }
 
-  
+
   /**
- * returns sleep time over seconds
- *
- * @returns {boolean}
- */
-sleepTime() {
+   * returns sleep time over seconds
+   *
+   * @returns {boolean}
+   */
+  sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
     return passedTime > 4000;
   }
