@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
@@ -59,34 +59,39 @@ a {
 
 .container {
     width: 720px;
-    height: 98vh;
+    height: 100%;
     position: relative;
     text-align: center;
     color: white;
 }
+.imgstart {
+    position: relative;
+height: 320px;
+ 
+}
 
 .bottom-left {
     position: absolute;
-    bottom: 80px;
-    left: 16px;
+    bottom: 8px;
+    left: 86px;
 }
 
 .top-left {
     position: absolute;
     top: 8px;
-    left: 16px;
+    left: 86px;
 }
 
 .top-right {
     position: absolute;
     top: 8px;
-    right: 16px;
+    right: 86px;
 }
 
 .bottom-right {
     position: absolute;
-    bottom: 80px;
-    right: 16px;
+    bottom: 8px;
+    right: 86px;
 }
 
 .centered {
