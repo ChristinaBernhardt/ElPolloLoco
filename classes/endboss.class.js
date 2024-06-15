@@ -128,12 +128,13 @@ animate() {
           }, 2000);
         }
         this.playAnimation(this.IMAGES_DEAD);
+        this.updateMoveTime();
       } else if (this.isHurt()) {
         if (isSoundOn) {
           this.endbosshurt_sound.play();
         }
         this.playAnimation(this.IMAGES_HURT);
       }
-    }, 150);
+    }, 50);
   }
 }

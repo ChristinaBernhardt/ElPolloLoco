@@ -113,11 +113,17 @@ class Character extends MovableObject {
   sleeping_sound = new Audio("audio/sleeping.mp3");
 
 
-  /**
-   * Creates an instance of Character.
-   *
-   *
-   */
+/**
+ * Constructs a new Character instance and initializes it with default properties and behaviors.
+ * 
+ * - Loads the initial character image.
+ * - Loads various character animations (idle, long idle, walking, jumping, hurt, dead).
+ * - Applies gravity to the character.
+ * - Starts the character animation.
+ * 
+ * @constructor
+ * @memberof Character
+ */
   constructor() {
     super().loadImage("assets/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_IDLE);
@@ -131,21 +137,35 @@ class Character extends MovableObject {
   }
 
 
-  /**
-   * animate character
-   *
-   */
+/**
+ * Starts the character animation by initializing necessary intervals.
+ * 
+ * - Starts the interval for handling character movements and actions.
+ * - Starts the interval for handling images.
+ * 
+ * @memberof Character
+ */
   animate() {
-    this.startintervalCharacter1();
-    this.startintervalCharacter2();
+    this.startIntervalCharacterDeadSleepingMoveJump();
+    this.startIntervalCharacterImages();
   }
 
 
-  /**
-   * animate character move
-   *
-   */
-  startintervalCharacter1() {
+/**
+ * Initializes an interval to handle character movements and actions based on keyboard inputs.
+ * The interval runs at 60 frames per second (1000ms / 60).
+ * 
+ * - Pauses walking sound if the character is not dead.
+ * - Throws an object if the 'D' key is pressed.
+ * - Moves the character to the right if the 'RIGHT' key is pressed and the character hasn't reached the level's end.
+ * - Moves the character to the left if the 'LEFT' key is pressed and the character's position is greater than -615.
+ * - Makes the character jump if the 'SPACE' key is pressed and the character is on the ground.
+ * - Adjusts the camera position based on the character's position.
+ * - Pauses sleeping sound and plays walking sound based on the character's state and actions.
+ * 
+ * @memberof Character
+ */
+  startIntervalCharacterDeadSleepingMoveJump() {
     setInterval(() => {
       if (!this.dead) {
         this.walking_sound.pause();
@@ -163,7 +183,7 @@ class Character extends MovableObject {
           }
         }
         if (this.world.keyboard.LEFT && this.x > -615) {
-          this.movecharacterleft();
+          this.moveCharacterLeft();
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
           this.sleeping_sound.pause();
@@ -175,14 +195,19 @@ class Character extends MovableObject {
   }
 
 
-  /**
-   * animate character hurt and die
-   *
-   */
-  startintervalCharacter2() {
+/**
+ * Initializes an interval to update the character's animation based on its current state.
+ * The interval runs every 150 milliseconds.
+ * 
+ * - Plays a specific animation based on the character's energy, state (hurt, jumping, walking, idle), and keyboard input.
+ * - Plays appropriate sounds when the character is hurt or sleeping, if sound is enabled.
+ * 
+ * @memberof Character
+ */
+  startIntervalCharacterImages() {
     setInterval(() => {
       if (this.energy === 0) {
-        this.energynull();
+        this.characterIsDieGameOver();
       } else if (this.isHurt()) {
         if (isSoundOn) {
           this.scream_sound.play();
@@ -198,21 +223,31 @@ class Character extends MovableObject {
         } else if (this.sleepTime()) {
           this.playAnimation(this.IMAGES_LONG_IDLE);
           if (isSoundOn) {
+            setTimeout(() => {
             this.sleeping_sound.play();
+          }, 1000);
           }
         } else {
           this.playAnimation(this.IMAGES_IDLE);
         }
       }
-    }, 150);
+    }, 100);
   }
 
 
-    /**
-   * let character die
-   *
-   */
-  energynull() {
+/**
+ * Handles the character's death and triggers the game over sequence.
+ * 
+ * - Marks the character as dead.
+ * - Stops the game after a 2-second delay.
+ * - Displays the game over screen.
+ * - Plays the losing sound if sound is enabled.
+ * - Redirects to the index page after an additional 2-second delay.
+ * - Plays the death animation once.
+ * 
+ * @memberof Character
+ */
+  characterIsDieGameOver() {
     if (!this.dead) {
       this.currentImage = 0;
       this.dead = true;
@@ -232,11 +267,17 @@ class Character extends MovableObject {
   }
 
 
-    /**
-   * let character jump
-   *
-   */
-  movecharacterleft() {
+/**
+ * Moves the character to the left and updates the character's state and sounds.
+ * 
+ * - Pauses the sleeping sound.
+ * - Moves the character to the left.
+ * - Sets the character's direction to face left.
+ * - Plays the walking sound if sound is enabled.
+ * 
+ * @memberof Character
+ */
+  moveCharacterLeft() {
     this.sleeping_sound.pause();
     this.moveLeft();
     this.otherDirection = true;
@@ -246,10 +287,15 @@ class Character extends MovableObject {
   }
 
 
-  /**
-   * let character jump
-   *
-   */
+/**
+ * Makes the character jump by setting its vertical speed and updating its state.
+ * 
+ * - Plays the jumping sound if sound is enabled.
+ * - Sets the character's vertical speed to initiate the jump.
+ * - Resets the current image index to 0.
+ * 
+ * @memberof Character
+ */
   jump() {
     if (isSoundOn) {
       this.jumping_sound.play();
@@ -260,7 +306,7 @@ class Character extends MovableObject {
 
 
   /**
-   * add bottles
+   * add bottles when colliding
    *
    * @param {*} salsa
    */
@@ -270,7 +316,7 @@ class Character extends MovableObject {
 
 
   /**
-   * add coins
+   * add coins when colliding
    *
    * @param {*} coin
    */
@@ -279,23 +325,18 @@ class Character extends MovableObject {
   }
 
 
-  /**
-   * update move time
-   *
-   */
-  updateMoveTime() {
-    let currentTime = new Date().getTime();
-    this.lastMoveTime = currentTime;
-  }
-
-
-  /**
-   * returns sleep time over seconds
-   *
-   * @returns {boolean}
-   */
+/**
+ * Checks if the character has been idle for more than 4 seconds.
+ * 
+ * - Calculates the time passed since the last movement.
+ * - Returns `true` if the passed time is greater than 4000 milliseconds (4 seconds), otherwise `false`.
+ * 
+ * @returns {boolean} - `true` if the character has been idle for more than 4 seconds, otherwise `false`.
+ * 
+ * @memberof Character
+ */
   sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
-    return passedTime > 4000;
+    return passedTime > 5000;
   }
 }

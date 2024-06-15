@@ -112,7 +112,7 @@ class MovableObject extends DrawableObject {
    * 
    */
   hit() {
-    this.energy -= 5;
+    this.energy -= 2.5;
     if (this.energy < 0) {
       this.energy = 0;
     } else {
@@ -126,6 +126,7 @@ class MovableObject extends DrawableObject {
    * 
    */
   hitEndboss() {
+    this.updateMoveTime();
     this.energy -= 20;
     if (this.energy < 0) {
       this.energy = 0;
@@ -174,4 +175,17 @@ showAndHideImage() {
       imageContainer.classList.remove("fade-out");
     }, 4000);
   }
+
+
+/**
+ * Updates the last move time to the current time.
+ * 
+ * - Sets the `lastMoveTime` property to the current timestamp.
+ * 
+ * @memberof Character
+ */
+updateMoveTime() {
+  let currentTime = new Date().getTime();
+  this.lastMoveTime = currentTime;
+}
 }

@@ -50,7 +50,7 @@ animate() {
       if (this.dead != true) {
         this.playAnimation(this.IMAGES_WALKING);
       }
-    }, 100);
+    }, 50);
   }
 
 

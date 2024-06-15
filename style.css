@@ -240,8 +240,19 @@ height: 320px;
     h1 {
         display: none;
     }
-
-  
+    .maincontent {
+        padding-top: 10%;
+    }
 }
 
+@media (max-height: 440px) {
+    .maincontent {
+ padding-top: 5%;
+    }
+}
 
+@media (max-height: 360px) {
+    .maincontent {
+ padding-top: 0;
+    }
+}
