@@ -225,7 +225,7 @@ class Character extends MovableObject {
           if (isSoundOn) {
             setTimeout(() => {
             this.sleeping_sound.play();
-          }, 1000);
+          }, 2000);
           }
         } else {
           this.playAnimation(this.IMAGES_IDLE);
@@ -337,6 +337,6 @@ class Character extends MovableObject {
  */
   sleepTime() {
     let passedTime = new Date().getTime() - this.lastMoveTime;
-    return passedTime > 5000;
+    return passedTime > 6000;
   }
 }
