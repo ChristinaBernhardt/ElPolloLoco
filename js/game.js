@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervalIds = [];
-let isSoundOn = false;
+let isSoundOn = true;
 let audioElements = [];
 let play_sound = new Audio("audio/play.mp3");
 play_sound.loop = true;
@@ -221,11 +221,12 @@ function soundOn() {
 function soundOff() {
   isSoundOn = false;
   audioElements.forEach(audio => {
-    audio.muted = true;
+      audio.volume = 0;
   });
   document.getElementById("soundOff").classList.remove("display-none");
   document.getElementById("soundOn").classList.add("display-none");
 }
+
 
 /**
  * Initializes audio elements on DOMContentLoaded.

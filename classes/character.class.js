@@ -165,34 +165,42 @@ class Character extends MovableObject {
  * 
  * @memberof Character
  */
-  startIntervalCharacterDeadSleepingMoveJump() {
-    setInterval(() => {
+startIntervalCharacterDeadSleepingMoveJump() {
+  setInterval(() => {
       if (!this.dead) {
-        this.walking_sound.pause();
-        if (this.world.keyboard.D) {
-          this.throw;
-        }
-        if (
-          this.world.keyboard.RIGHT &&
-          this.x < this.world.level.level_end_x
-        ) {
-          this.sleeping_sound.pause();
-          this.moveRight();
-          if (isSoundOn) {
-            this.walking_sound.play();
+          // Pause walking sound by setting volume to 0
+          this.walking_sound.volume = 0;
+          // Handle throwing action
+          if (this.world.keyboard.D) {
+              this.throw();
           }
-        }
-        if (this.world.keyboard.LEFT && this.x > -615) {
-          this.moveCharacterLeft();
-        }
-        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-          this.sleeping_sound.pause();
-          this.jump();
-        }
-        this.world.camera_x = -this.x + 100;
+          // Move right if RIGHT key is pressed and within level bounds
+          if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+              // Pause sleeping sound by setting volume to 0
+              this.sleeping_sound.volume = 0;
+              this.moveRight();
+              if (isSoundOn) {
+                  this.walking_sound.volume = 0.5; // Restore volume if sound is on
+              }
+          }
+          // Move left if LEFT key is pressed and within bounds
+          if (this.world.keyboard.LEFT && this.x > -615) {
+              this.moveCharacterLeft();
+              if (isSoundOn) {
+                this.walking_sound.volume = 0.5; // Restore volume if sound is on
+            }
+          }
+          // Perform jump action if SPACE key is pressed and character is on ground
+          if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+              // Pause sleeping sound by setting volume to 0
+              this.sleeping_sound.volume = 0;
+              this.jump();
+          }
+          // Update camera position based on character's x-coordinate
+          this.world.camera_x = -this.x + 100;
       }
-    }, 1000 / 60);
-  }
+  }, 1000 / 60);
+}
 
 
 /**
@@ -223,10 +231,9 @@ class Character extends MovableObject {
         } else if (this.sleepTime()) {
           this.playAnimation(this.IMAGES_LONG_IDLE);
           if (isSoundOn) {
-            setTimeout(() => {
             this.sleeping_sound.play();
-          }, 2000);
-          }
+            this.sleeping_sound.volume = 0.5;
+            }
         } else {
           this.playAnimation(this.IMAGES_IDLE);
         }

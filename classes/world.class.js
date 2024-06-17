@@ -45,14 +45,16 @@ setWorld() {
   }
 
 
-  /**
- * run the game
- * 
+/**
+ * Executes the game loop and initializes collision checks and other interactions.
+ * This method uses two intervals for regular checking of game events.
  */
 run() {
+  setInterval(() => {
+    this.checkCollisions();
+  }, 10);
     setInterval(() => {
-      this.checkCollisions();
-      this.checkThrowableObjects();
+         this.checkThrowableObjects();
       this.checkCollisionsEndbossBottle();
     }, 100);
   }
@@ -112,7 +114,6 @@ checkCollisionsEndbossBottle() {
             bottle.isExploded = true;
             bottle.animateSplash(bottle);
             enemy.hitEndboss();
-
             this.statusBarEndboss.setPercentage(enemy.energy);
             setTimeout(() => {
               this.throwableObjects.splice(bottle, 1);
