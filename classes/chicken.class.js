@@ -31,7 +31,7 @@ constructor() {
   this.loadImages(this.IMAGES_WALKING);
   this.loadImages(this.IMAGES_DEAD);
   this.x = 500 + Math.random() * 4000;
-  this.speed = 0.15 + Math.random() * 0.5;
+  this.speed = 0.15 + Math.random() * 1;
   this.animate();
 }
 
