@@ -16,7 +16,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     background-repeat: no-repeat;
-    border: 5px solid green;
     box-sizing: border-box;
 }
 
@@ -37,7 +36,6 @@ body.scroll {
 
 .maincontent {
     position: relative;
-    border: 1px solid red;
 }
 
 .spiegeln {
@@ -69,7 +67,6 @@ a {
 
 .overlay {
     display: block;
-    border: 1px solid blue;
 }
 
 .display-none {
@@ -86,7 +83,6 @@ a {
     position: relative;
     text-align: center;
     color: white;
-    border: 1px solid black;
 }
 .imgstart {
     position: relative;
