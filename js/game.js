@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervalIds = [];
-let isSoundOn = true;
+let isSoundOn = false;
 let audioElements = [];
 let play_sound = new Audio("audio/play.mp3");
 play_sound.loop = true;

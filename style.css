@@ -1,9 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 100%;
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     background-position: center;
     background-size: cover;
@@ -12,10 +16,28 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     background-repeat: no-repeat;
+    border: 5px solid green;
+    box-sizing: border-box;
 }
+
+body.no-scroll {
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+body.scroll {
+    overflow: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 20px; /* Optional: Adjust padding as needed */
+}
+
+
 
 .maincontent {
     position: relative;
+    border: 1px solid red;
 }
 
 .spiegeln {
@@ -47,6 +69,7 @@ a {
 
 .overlay {
     display: block;
+    border: 1px solid blue;
 }
 
 .display-none {
@@ -59,10 +82,11 @@ a {
 
 .container {
     width: 720px;
-    height: 100%;
+    height: 96%;
     position: relative;
     text-align: center;
     color: white;
+    border: 1px solid black;
 }
 .imgstart {
     position: relative;
@@ -179,6 +203,7 @@ height: 320px;
     text-align: center;
 }
 
+/* Allgemeine Stile */
 #deviceNotice {
     background-image: url('assets/5_background/abstract-4582133_1280.jpg');
     position: absolute;
@@ -205,16 +230,18 @@ height: 320px;
     /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+/* Mobile Geräte */
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }
+    .mobileIconShow {
+        display: flex;
+    }
 }
 
+/* Hochformat auf kleinen Bildschirmen */
 @media (orientation: portrait) and (max-width: 600px) {
-
-    /* orientation: portrait-> Regel die gilt wenn das GerÃ¤t in 
-    Hochformat gehalten wird (Portrait)*/
     #deviceNotice {
         display: flex;
         width: 100vw;
@@ -227,32 +254,39 @@ height: 320px;
     }
 }
 
+/* Geringe Höhe */
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
     }
-    .mobileIconShow{
+    .mobileIconShow {
         display: flex;
     }
 }
 
+/* H1 ausblenden bei geringer Höhe */
 @media (max-height: 480px) {
     h1 {
         display: none;
     }
-    .maincontent {
-        padding-top: 10%;
+}
+
+/* Hinzufügen einer speziellen Medienabfrage für iPads im Hochformat */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .mobileIconShow {
+        display: flex;
+    }
+    canvas {
+        width: 100%;
     }
 }
 
-@media (max-height: 440px) {
-    .maincontent {
- padding-top: 5%;
+/* Hinzufügen einer speziellen Medienabfrage für iPads im Querformat */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .mobileIconShow {
+        display: flex;
     }
-}
-
-@media (max-height: 360px) {
-    .maincontent {
- padding-top: 0;
+    canvas {
+        width: 100%;
     }
 }
