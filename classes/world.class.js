@@ -76,26 +76,28 @@ checkThrowableObjects() {
  * check collisions between character an enemies
  * 
  */
-checkCollisions() {
+  checkCollisions() {
     this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
-        if (
-          this.character.isAboveGround() &&
-          (enemy instanceof Chicken || enemy instanceof Yellowchicken)
-        ) {
-          enemy.die();
-
-          this.level.deleteEnemy(enemy);
-          if (isSoundOn) {
-            this.chickendie_sound.play();
-          }
-        } else {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
+        if (this.character.isColliding(enemy)) {
+            if (
+                this.character.isAboveGround() &&
+                (enemy instanceof Chicken || enemy instanceof Yellowchicken)
+            ) {
+                enemy.die();
+                this.level.deleteEnemy(enemy);
+                if (isSoundOn) {
+                    this.chickendie_sound.play();
+                }
+            } else {
+                if (!enemy.dead) {  // Überprüfen, ob der enemy nicht tot ist
+                    this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy);
+                }
+            }
         }
-      }
     });
-  }
+}
+
 
 
   /**
