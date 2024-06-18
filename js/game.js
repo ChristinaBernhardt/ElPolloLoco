@@ -202,7 +202,7 @@ function enterFullscreen(element) {
  * Exits fullscreen mode.
  * This function exits fullscreen mode if the document is currently in fullscreen mode.
  */
-function exitFullscreen(document) {
+function exitFullscreen() {
   console.log('exit');
   if (document.exitFullscreen) {
     document.exitFullscreen();
