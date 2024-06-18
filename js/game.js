@@ -16,6 +16,7 @@ function init() {
   initLevel();
   bindBtsPressEvents();
   initAudio();
+  play_sound.play();
   canvas = document.getElementById("canvas");
   document.getElementById("overlay").classList.add("display-none");
   document.getElementById("iconBar").classList.add("display-flex");
@@ -220,6 +221,7 @@ function soundOn() {
  */
 function soundOff() {
   isSoundOn = false;
+  play_sound.volume = 0;
   audioElements.forEach(audio => {
       audio.volume = 0;
   });
