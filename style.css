@@ -155,6 +155,24 @@ height: 320px;
     }
 }
 
+.iconBarMobileStart {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    padding-top: 20px;
+    z-index: 1;
+    img {
+        height: 24px;
+    }
+    img:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
+
 .mobileIconShow{
     display: none;
 }

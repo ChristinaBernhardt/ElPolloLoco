@@ -115,6 +115,26 @@ function handleFireButtonTouchEnd(e) {
   keyboard.D = false;
 }
 
+
+/**
+ * Handles touch start on the left button.
+ * @param {TouchEvent} e - The touch event object.
+ */
+function handleLeftButtonTouchStart(e) {
+  e.preventDefault();
+  keyboard.ESC = true;
+}
+
+/**
+ * Handles touch end on the left button.
+ * @param {TouchEvent} e - The touch event object.
+ */
+function handleLeftButtonTouchEnd(e) {
+  e.preventDefault();
+  keyboard.ESC = false;
+}
+
+
 /**
  * Handles keydown events for keyboard controls.
  * @param {KeyboardEvent} e - The keydown event object.
@@ -128,6 +148,11 @@ window.addEventListener("keydown", function(e) {
     keyboard.SPACE = true;
   } else if (e.keyCode == 68) {
     keyboard.D = true;
+  } else if (e.keyCode == 27) {
+    keyboard.ESC = true;
+    exitFullscreen();
+    console.log('after exit-press');
+   
   }
 });
 
@@ -144,6 +169,8 @@ window.addEventListener("keyup", function(e) {
     keyboard.SPACE = false;
   } else if (e.keyCode == 68) {
     keyboard.D = false;
+  } else if (e.keyCode == 27) {
+    keyboard.ESC = false;
   }
 });
 
@@ -181,6 +208,7 @@ function enterFullscreen(element) {
   if (element.requestFullscreen) {
     element.requestFullscreen();
     document.getElementById("fullscreenButton").classList.add("display-none");
+    document.getElementById("fullscreenButtonStart").classList.add("display-none");
   } else if (element.msRequestFullscreen) {
     element.msRequestFullscreen();
   } else if (element.webkitRequestFullscreen) {
@@ -193,14 +221,18 @@ function enterFullscreen(element) {
  * This function exits fullscreen mode if the document is currently in fullscreen mode.
  */
 function exitFullscreen() {
+  console.log('exit');
   if (document.exitFullscreen) {
     document.exitFullscreen();
     document.getElementById("fullscreenButton").classList.remove("display-none");
+    document.getElementById("fullscreenButtonStart").classList.remove("display-none");
   } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
     document.getElementById("fullscreenButton").classList.remove("display-none");
+    document.getElementById("fullscreenButtonStart").classList.remove("display-none");
   }
 }
+
 
 /**
  * Turns on sound.
@@ -213,6 +245,8 @@ function soundOn() {
   });
   document.getElementById("soundOn").classList.remove("display-none");
   document.getElementById("soundOff").classList.add("display-none");
+  document.getElementById("soundOffStart").classList.add("display-none");
+  document.getElementById("soundOnStart").classList.remove("display-none");
 }
 
 /**
@@ -227,6 +261,8 @@ function soundOff() {
   });
   document.getElementById("soundOff").classList.remove("display-none");
   document.getElementById("soundOn").classList.add("display-none");
+  document.getElementById("soundOffStart").classList.remove("display-none");
+  document.getElementById("soundOnStart").classList.add("display-none");
 }
 
 

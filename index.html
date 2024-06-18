@@ -75,7 +75,17 @@
           <!-- <a class="centered hover" onclick="enterFullscreen(document.documentElement)">Fullscreen</a> -->
           <a class="top-right hover comic" href="Impressum.html">Impressum</a>
           <a class="bottom-right hover comic" href="Anleitung.html">Anleitung</a>
-
+          <div class="iconBarMobileStart">
+            <div id="soundOnStart" onclick="soundOff()">
+              <img src="assets/mute.png" alt="sound-on">
+            </div>
+            <div id="soundOffStart" class="display-none" onclick="soundOn()">
+              <img src="assets/unmute.png" alt="sound-off">
+            </div>
+            <div id="fullscreenButtonStart">
+              <img src="assets/expand-black.png" alt="fullScreen" onclick="enterFullscreen(document.documentElement)">
+            </div>
+          </div>
         </div>
       </div>
 
